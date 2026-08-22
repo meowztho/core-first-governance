@@ -58,7 +58,9 @@
         "preload_core_first_skill": false,
         "pass_implementation_narrative": false,
         "pass_original_requirements": true,
-        "pass_raw_diff_and_test_output": true
+        "pass_raw_diff_and_test_output": true,
+        "pass_raw_observable_runtime_evidence_when_available": true,
+        "pass_observable_verification_conclusion_before_independent_derivation": false
       }
     },
     {
@@ -104,6 +106,17 @@
         "observable_product_verification": true,
         "observable_status": "INCONCLUSIVE",
         "do_not_downgrade_to_static_pass": true
+      }
+    },
+    {
+      "id": "observable-verification-to-independent-review",
+      "prompt": "A consequential user workflow has raw screenshots and before/after runtime evidence from observable-product verification, which concluded VERIFIED. Route it to independent review without anchoring.",
+      "expected": {
+        "fresh_independent_reviewer": true,
+        "pass_raw_observable_runtime_evidence": true,
+        "pass_observable_verification_status_before_independent_derivation": false,
+        "pass_observable_verification_finding_narrative_before_independent_derivation": false,
+        "independent_reviewer_derives_outcome_itself": true
       }
     }
   ]

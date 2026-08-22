@@ -18,6 +18,16 @@
         "read_only": true,
         "anti_anchored": true
       }
+    },
+    {
+      "id": "observable-evidence-anti-anchoring",
+      "prompt": "A consequential UI workflow was exercised by observable-product verification, which reported VERIFIED and captured screenshots plus before/after runtime state. Perform independent review.",
+      "expected": {
+        "pass_raw_observable_runtime_evidence": true,
+        "pass_observable_verification_status_before_independent_derivation": false,
+        "pass_observable_verification_conclusion_before_independent_derivation": false,
+        "independent_reviewer_derives_outcome_itself": true
+      }
     }
   ]
 }

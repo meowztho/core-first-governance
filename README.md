@@ -1,6 +1,10 @@
-# Core-First Governance v0.5.0
+# Core-First Governance v0.5.1
 
 Provider-neutral agent governance for **Core-First software architecture plus observable product verification**, currently packaged as a Codex plugin.
+
+## What v0.5.1 changes
+
+v0.5.1 hardens the handoff from observable product verification to independent review: the independent reviewer receives the **raw runtime/observable evidence**, but not the observable verifier's interpreted `VERIFIED | FAILED | INCONCLUSIVE` result, conclusion, confidence, or finding narrative before independently deriving its own findings. It also removes the duplicate context-handoff document from the release.
 
 ## Why v0.5.0 exists
 
@@ -89,7 +93,7 @@ Then fully restart the ChatGPT desktop app, open the Plugins Directory, install 
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-08-22_v0.5.0.md
+├── CONTEXT_HANDOFF_2026-08-22_v0.5.1.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
@@ -119,7 +123,7 @@ For Codex publishing/ingestion, also run the host's current canonical plugin val
 2. Keep `core-first-extension-architecture` canonical; do not duplicate architecture taxonomy into product verification or orchestration.
 3. Keep observable-product outcome/evidence semantics inside `observable-product-verification`.
 4. Keep `core-first-verifier` architecture-focused and fresh/read-only.
-5. Keep `independent-review` anti-anchored and high-signal rather than routine.
+5. Keep `independent-review` anti-anchored and high-signal: pass raw evidence, not prior verifier interpretations, before independent derivation.
 6. Keep portable semantics provider/tool neutral.
 7. Do not turn ambient observation into automatic scope expansion.
 8. Re-run release and host/package validation after Skill or manifest changes.

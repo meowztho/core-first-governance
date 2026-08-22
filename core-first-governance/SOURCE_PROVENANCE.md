@@ -1,10 +1,10 @@
 # Source provenance
 
-## v0.5.0
+## v0.5.1
 
 ### `core-first-extension-architecture`
 
-Copied byte-for-byte from the supplied canonical standalone `core-first-extension-architecture` source. v0.5.0 intentionally does **not** add product-verification or routing policy to that Skill. Its architecture ownership remains unchanged.
+Copied byte-for-byte from the supplied canonical standalone `core-first-extension-architecture` source. v0.5.1 intentionally does **not** add product-verification or routing policy to that Skill. Its architecture ownership remains unchanged.
 
 ### `core-first-orchestration`
 
@@ -12,7 +12,7 @@ Derived from the v0.4.0 provider-neutral orchestration Skill and extended only i
 
 ### `observable-product-verification`
 
-New v0.5.0 canonical procedure for user/external observable runtime evidence. It owns:
+Introduced in v0.5.0; preserved in v0.5.1 as the canonical procedure for user/external observable runtime evidence. It owns:
 - outcome-vs-action evidence semantics;
 - before/action/settled-after verification;
 - ambient use of already-acquired evidence;
@@ -29,7 +29,7 @@ Preserved from v0.4.0 semantics: fresh read-only Core-First conformance verifica
 
 ### `independent-review`
 
-Preserved from v0.4.0 semantics: anti-anchored evidence-based review for consequential/high-risk/difficult-to-verify/materially blocked work.
+Preserved as the anti-anchored evidence-based review owner for consequential/high-risk/difficult-to-verify/materially blocked work. v0.5.1 extends only its evidence handoff contract: raw observable/runtime evidence may be supplied, while prior observable-verification status/conclusions/confidence/finding narrative are withheld until the reviewer independently derives findings.
 
 ## Boundary
 

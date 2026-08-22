@@ -241,7 +241,8 @@ For independence:
 - do not preload `core-first-extension-architecture` merely because the implementation used it;
 - do not pass the primary agent's implementation narrative, conclusions, confidence, or justification;
 - do not pass Core-First-verifier conclusions before the independent reviewer derives its own findings;
-- do pass the original requirements, complete applicable project instructions, relevant raw diffs/files, and actual verification-command/output evidence as required by `independent-review`.
+- when observable-product verification ran, do not pass its interpreted status, conclusion, confidence, or finding narrative before independent derivation;
+- do pass the original requirements, complete applicable project instructions, relevant raw diffs/files, actual verification-command/output evidence, and relevant raw observable/runtime evidence as required by `independent-review`.
 
 If the project's own applicable instructions explicitly require Core-First, do not hide that project requirement from the independent reviewer. Context isolation removes prior reasoning/priming; it does not falsify project truth.
 
