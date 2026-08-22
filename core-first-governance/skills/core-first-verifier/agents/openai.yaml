@@ -1,0 +1,6 @@
+interface:
+  display_name: "Core-First Verifier"
+  short_description: "Fresh read-only Core-First conformance check"
+  default_prompt: "Use $core-first-verifier to independently verify the current change against the canonical Core-First architecture method."
+policy:
+  allow_implicit_invocation: false

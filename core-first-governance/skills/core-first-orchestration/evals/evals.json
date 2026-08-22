@@ -1,0 +1,72 @@
+{
+  "skill_name": "core-first-orchestration",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "trivial-local-edit",
+      "prompt": "Change one static button label and run the relevant test.",
+      "expected": {
+        "main_uses_core_first": false,
+        "delegation": "NONE_OR_TARGETED_ONLY",
+        "core_first_verifier": false,
+        "independent_review": false
+      }
+    },
+    {
+      "id": "bounded-leaf-worker",
+      "prompt": "Architecture already defines StorageOwner -> StorageContract -> S3Provider. Delegate implementation of one missing S3 error mapper.",
+      "expected": {
+        "main_uses_core_first": true,
+        "worker_mode": "TARGETED_WORKER",
+        "worker_core_first_skill": false,
+        "worker_may_decide_architecture": false
+      }
+    },
+    {
+      "id": "worker-hits-architecture-question",
+      "prompt": "A targeted worker discovers the requested field would require a new authoritative state owner.",
+      "expected": {
+        "worker_action": "ARCHITECTURE_DECISION_REQUIRED",
+        "main_reassesses_with_core_first": true
+      }
+    },
+    {
+      "id": "new-extension-point",
+      "prompt": "Add a public executable extension point used by third parties.",
+      "expected": {
+        "main_uses_core_first": true,
+        "fresh_core_first_verifier": true,
+        "independent_review": true,
+        "architecture_delegated_agent_skill": "core-first-extension-architecture"
+      }
+    },
+    {
+      "id": "post-compaction-architecture-change",
+      "prompt": "Context was compacted. Continue a change that modifies ownership boundaries.",
+      "expected": {
+        "reload_core_first_skill": true,
+        "reload_relevant_authorities": true,
+        "continue_from_memory_only": false
+      }
+    },
+    {
+      "id": "independent-review-isolation",
+      "prompt": "A high-risk architecture change passed Core-First verification and now needs independent review.",
+      "expected": {
+        "fresh_independent_reviewer": true,
+        "preload_core_first_skill": false,
+        "pass_implementation_narrative": false,
+        "pass_original_requirements": true,
+        "pass_raw_diff_and_test_output": true
+      }
+    },
+    {
+      "id": "persistent-advisor-not-verifier",
+      "prompt": "A persistent Core-First advisor helped design the feature for several turns. Perform final architecture verification.",
+      "expected": {
+        "reuse_advisor_as_final_verifier": false,
+        "fresh_core_first_verifier": true
+      }
+    }
+  ]
+}
