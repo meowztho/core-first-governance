@@ -1,139 +1,100 @@
-# Core-First Governance
+# Core-First Governance v0.5.0
 
-Provider-neutral agent governance for Core-First software architecture, currently distributed as a **Codex plugin**. The governance model itself is intentionally independent of Codex-specific agent terminology or APIs.
+Provider-neutral agent governance for **Core-First software architecture plus observable product verification**, currently packaged as a Codex plugin.
 
-![Core-First Governance in the Codex UI](docs/codex-ui.png)
+## Why v0.5.0 exists
 
-## Why this exists
+Good code, passing builds, and clean architecture do not prove that a product actually works at the user/external boundary. A button can exist but do nothing, a slider can receive an input without moving, a game can pass unit tests and still fail after landing, and an API call can succeed without producing its required external effect.
 
-Long-running agent sessions can lose or compact context. A software-engineering method that only lives in remembered conversation state is fragile. Core-First Governance treats remembered Skill content as cache, not authority: architecture-relevant work reloads the canonical Core-First Skill when required, and important changes can be checked in a fresh read-only verification context.
-
-It also avoids the opposite failure mode: giving every delegated agent the entire project history and every Skill. Each delegated lane receives the **minimum sufficient context, knowledge, and authority** required for its role.
-
-## Provider-neutral terminology
-
-| Canonical term | Meaning | Possible host terms |
-| --- | --- | --- |
-| **Primary agent** | User-facing root agent; orchestrator and final integrator | main agent, root agent, parent agent |
-| **Delegated agent** | Any bounded child/specialist execution context | subagent, child agent, worker, session, tool-agent |
-| **Targeted worker** | Bounded implementation/investigation lane with architecture already decided | worker/subagent |
-| **Core-First advisor** | Delegated lane allowed to investigate architecture using Core-First | specialist/subagent |
-| **Core-First verifier** | Fresh read-only Core-First conformance check | reviewer/subagent/fresh session |
-| **Independent reviewer** | Anti-anchored review for consequential/high-risk work | reviewer, external model, separate context |
-
-The skills define semantics, not a provider API. A host adapter maps those roles onto whatever delegation, Skill injection, context isolation, or model-selection mechanisms are actually available.
-
-## Included skills
+v0.5.0 adds a separate verification procedure while preserving the existing ownership model:
 
 | Skill | Responsibility |
 | --- | --- |
-| `core-first-orchestration` | Primary-agent decision procedure for Core-First use, delegation, context isolation, freshness and review escalation. |
-| `core-first-extension-architecture` | Canonical architecture method for ownership, reuse, composition, providers, extensions and core-rule changes. |
-| `core-first-verifier` | Fresh, read-only Core-First conformance verification against requirements, authorities, raw diffs/files and actual evidence. |
-| `independent-review` | Unbiased read-only review for consequential, high-risk, difficult-to-verify or materially blocked implementation work. |
+| `core-first-orchestration` | Primary-agent routing for Core-First, delegation, observable verification, freshness, and review escalation. |
+| `core-first-extension-architecture` | Canonical architecture method for ownership, reuse, composition, providers, extensions, and core-rule changes. |
+| `observable-product-verification` | Proves real user/external runtime outcomes and makes already-acquired evidence work harder without turning every check into a full regression pass. |
+| `core-first-verifier` | Fresh, read-only Core-First architecture conformance verification. |
+| `independent-review` | Unbiased read-only review for consequential, high-risk, difficult-to-verify, or materially blocked work. |
 
 ## Operating model
 
 ```text
-User
+User requirement
   ↓
 Primary agent = orchestrator + final integrator
   ↓
 core-first-orchestration
-  ├─ Primary agent applies Core-First itself when architecture is material
-  ├─ Targeted worker
-  │    └─ bounded task; no Core-First Skill by default
-  ├─ Core-First advisor/worker
-  │    └─ architecture lane; loads Core-First fresh
-  ├─ Investigator
-  │    └─ bounded evidence gathering
-  ├─ Fresh Core-First verifier
-  │    └─ read-only; re-derives expected architecture
-  └─ Fresh independent reviewer
-       └─ high-risk/consequential work; anti-anchored input
+  ├─ Core-First architecture when ownership/reuse is material
+  ├─ bounded implementation/investigation delegation when useful
+  ├─ observable-product-verification when a real runtime/user outcome is material
+  │    ├─ before → action → settled after
+  │    ├─ inspect already-acquired surrounding evidence
+  │    ├─ cheap bounded adjacent actions
+  │    └─ preserve failures as evidence
+  ├─ Core-First reverse trace for architecture/root-cause correction when needed
+  ├─ fresh Core-First verifier for material architecture changes
+  └─ independent review for consequential/high-risk/difficult work
 ```
 
-### Primary invariant
+### Important invariants
 
-Delegating to a Core-First-aware agent **never discharges the primary agent's own Core-First responsibility**. The primary agent still owns requirement understanding, delegation boundaries, integration, reconciliation, and the final response.
+- **The primary agent remains the orchestrator.** No new product-verification agent becomes a parallel owner.
+- **Successful actions are not successful outcomes.** A click/input/request/build/tool call proves only what was actually observed.
+- **Use the real boundary when the claim depends on it.** If it cannot be exercised, report the claim as unverified/inconclusive rather than silently downgrading to static evidence.
+- **Use already-acquired evidence fully.** Observe obvious material contradictions in the same visible/runtime evidence instead of tunnel-visioning on a single assertion.
+- **Observation does not expand write authority.** Adjacent/unrelated defects may be reported without being opportunistically fixed.
+- **Explore only cheaply and locally.** Perform a few natural adjacent actions when they are low-cost and likely to reveal integration failures; do not force a full-product regression for every change.
+- **Reuse project navigation.** A runtime failure should follow existing project index/system/capability/runtime-trace/Blueprint/implementation-anchor routes first; validate the anchor and broaden discovery only when the route is missing, stale, ambiguous, or contradicted.
+- **No second QA architecture.** Verification does not create a duplicate project graph.
+- **Tooling is abstract.** The governance model requires capabilities/evidence, not a particular MCP, browser, computer-use system, script, or provider.
 
-### Context and knowledge isolation
+## Provider-neutral roles
 
-Every delegated lane explicitly selects:
+The existing roles remain unchanged:
 
-- **Role** — worker, advisor, investigator, verifier, independent reviewer.
-- **Skill knowledge** — none, Core-First, Independent Review, or another required Skill.
-- **Project context** — minimum sufficient requirements, files, contracts, authorities, and evidence.
-- **Excluded context** — especially prior narratives/conclusions when independence matters.
-- **Authority** — explicit write and decision boundaries.
-- **Lifecycle** — persistent specialist where useful; fresh context where independence is required.
+- **primary agent** — user-facing root agent; orchestrator and final integrator;
+- **delegated agent** — bounded child/specialist execution context;
+- **targeted worker** — bounded implementation/investigation with architecture already decided;
+- **Core-First advisor/worker** — architecture lane using Core-First fresh;
+- **Core-First verifier** — fresh read-only architecture conformance context;
+- **independent reviewer** — anti-anchored consequential/high-risk review context.
 
-A targeted worker that reaches an unresolved architecture boundary must return `ARCHITECTURE_DECISION_REQUIRED` instead of silently inventing a new owner, capability, extension seam, or foreign-state write path.
-
-## Host portability
-
-The portable skills do not require a specific `spawn_agent`, subagent, session, or MCP API. When a host supports explicit Skill injection, use it. Otherwise resolve/read the canonical Skill from an installed file or another verifiable source. If the host cannot provide fresh contexts or read-only enforcement, use the strongest available isolation and state the limitation instead of pretending the guarantee exists.
-
-The current repository packages the portable skills for **Codex**. Other hosts should reuse the same Skill semantics and replace only packaging/adapter details.
+`observable-product-verification` is a **Skill/procedure**, not a mandatory new role. The primary agent can run it itself or give the procedure to an appropriately bounded existing role.
 
 ## Windows / Codex UI installation
 
-This repository includes `install-personal-windows.ps1`. The UI flow confirmed in this project installs the Codex plugin source under:
-
-```text
-%USERPROFILE%\.codex\plugins\core-first-governance
-```
-
-and maintains the personal marketplace file at:
-
-```text
-%USERPROFILE%\.agents\plugins\marketplace.json
-```
-
-Run from an extracted release directory:
+From the extracted release directory:
 
 ```powershell
 Set-ExecutionPolicy -Scope Process Bypass
 .\install-personal-windows.ps1
 ```
 
-Then:
+The installer copies the plugin source to:
 
-1. Fully quit and restart the ChatGPT desktop app.
-2. Open the Plugins Directory.
-3. Select the personal marketplace/source.
-4. Find **Core-First Governance** and install it.
-5. Start a **new Codex thread** so the installed Skills are picked up cleanly.
-
-The Codex UI installation was confirmed on Windows with all four bundled Skills visible and enabled.
-
-## PowerShell signature
-
-`install-personal-windows.ps1` is not Authenticode-signed in this repository. A valid publisher signature requires the publisher's code-signing certificate and private key.
-
-With a suitable certificate in `Cert:\CurrentUser\My`:
-
-```powershell
-.\sign-installer.ps1 -Thumbprint <CERTIFICATE_THUMBPRINT>
+```text
+%USERPROFILE%\.codex\plugins\core-first-governance
 ```
 
-Verify with:
+and updates:
 
-```powershell
-Get-AuthenticodeSignature .\install-personal-windows.ps1 | Format-List
+```text
+%USERPROFILE%\.agents\plugins\marketplace.json
 ```
+
+Then fully restart the ChatGPT desktop app, open the Plugins Directory, install **Core-First Governance** from the personal source, and start a **new Codex thread** so the updated five-Skill package is picked up cleanly.
 
 ## Repository layout
 
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-08-22.md
+├── CONTEXT_HANDOFF_2026-08-22_v0.5.0.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
-├── docs/
-│   └── codex-ui.png
+├── validate_release.py
+├── SHA256SUMS.txt
 └── core-first-governance/
     ├── .codex-plugin/
     │   └── plugin.json
@@ -141,40 +102,28 @@ Get-AuthenticodeSignature .\install-personal-windows.ps1 | Format-List
     └── skills/
         ├── core-first-orchestration/
         ├── core-first-extension-architecture/
+        ├── observable-product-verification/
         ├── core-first-verifier/
         └── independent-review/
 ```
 
 ## Validation
 
-Validate the current Codex package with the supplied Codex `plugin-creator` validator:
+`validate_release.py` is a release-local structural/provenance validator included in this bundle. It checks the manifest, five Skill layouts, YAML/JSON syntax, and byte identity of the packaged canonical Core-First Skill against the supplied canonical source hash recorded for this release.
 
-```bash
-python validate_plugin.py core-first-governance
-```
-
-The rule ownership remains separated:
-
-- orchestration owns agent-routing/context/freshness governance;
-- `core-first-extension-architecture` remains the canonical architecture method;
-- `core-first-verifier` applies that canonical method independently;
-- `independent-review` remains the separate anti-anchored risk review;
-- project/repository authorities remain project truth.
+For Codex publishing/ingestion, also run the host's current canonical plugin validator when available. Host-specific validation is an adapter concern and may evolve independently of the portable Skill semantics.
 
 ## Development rules
 
-1. Preserve **one canonical owner per rule**; do not duplicate Core-First or Independent Review rules in orchestration.
-2. Keep portable governance semantics provider-neutral. Put Codex/Claude/Gemini/etc. mechanics in host packaging or adapter documentation only.
-3. Keep the primary agent as orchestrator/final integrator; do not introduce a parallel orchestrator agent.
-4. Keep final Core-First verification fresh and read-only to the extent the host can enforce it.
-5. Do not preload Core-First into the independent reviewer merely because the implementation used it.
-6. Re-run provider/package validation after manifest or Skill changes.
-7. Test fresh-context pickup after installation/update.
-
-## Provenance
-
-`core-first-extension-architecture` remains unchanged from the supplied standalone canonical Skill. `independent-review` was adapted in v0.4.0 only to remove Codex/multi-MCP-specific reviewer transport wording while preserving its review policy. See `core-first-governance/SOURCE_PROVENANCE.md`.
+1. Preserve one canonical owner per rule.
+2. Keep `core-first-extension-architecture` canonical; do not duplicate architecture taxonomy into product verification or orchestration.
+3. Keep observable-product outcome/evidence semantics inside `observable-product-verification`.
+4. Keep `core-first-verifier` architecture-focused and fresh/read-only.
+5. Keep `independent-review` anti-anchored and high-signal rather than routine.
+6. Keep portable semantics provider/tool neutral.
+7. Do not turn ambient observation into automatic scope expansion.
+8. Re-run release and host/package validation after Skill or manifest changes.
 
 ## License
 
-No repository license has been selected. Add the intended license before public redistribution if explicit terms are required.
+No repository license has been selected in this package. Add the intended license before public redistribution if explicit terms are required.

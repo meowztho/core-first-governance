@@ -1,28 +1,36 @@
 # Source provenance
 
-## Canonical source preserved unchanged
+## v0.5.0
 
-`core-first-extension-architecture/SKILL.md` remains byte-identical to the supplied standalone source:
+### `core-first-extension-architecture`
 
-```text
-4942515173ca00b7e1fcd9d962b93dae53f2e5d492a856f1fd6dcdd349d6625b  supplied SKILL(2).md
-4942515173ca00b7e1fcd9d962b93dae53f2e5d492a856f1fd6dcdd349d6625b  bundled core-first-extension-architecture/SKILL.md
-```
+Copied byte-for-byte from the supplied canonical standalone `core-first-extension-architecture` source. v0.5.0 intentionally does **not** add product-verification or routing policy to that Skill. Its architecture ownership remains unchanged.
 
-Its supplied references/evals remain bundled from the same source package.
+### `core-first-orchestration`
 
-## Independent Review portability adaptation
+Derived from the v0.4.0 provider-neutral orchestration Skill and extended only in its existing routing responsibility to decide when observable product verification is material, how its evidence feeds correction/review, and how missing runtime capabilities degrade explicitly.
 
-The supplied `independent-review` source was originally:
+### `observable-product-verification`
 
-```text
-f3396714bea29c040711a65d62d8c968c3a72e7d1f67267a7b2842a0e5b4df35  supplied SKILL(1).md
-```
+New v0.5.0 canonical procedure for user/external observable runtime evidence. It owns:
+- outcome-vs-action evidence semantics;
+- before/action/settled-after verification;
+- ambient use of already-acquired evidence;
+- cheap bounded adjacent exploration;
+- finding/scope separation;
+- runtime-evidence status `VERIFIED | FAILED | INCONCLUSIVE`;
+- routing discovered failures through existing project maps/traces rather than inventing a second QA architecture.
 
-In v0.4.0 its review policy is preserved, but the transport sentence that named a `Codex subagent` and `multi-MCP provider` is deliberately generalized to provider-neutral delegated/external reviewer terminology. Current bundled hash:
+It does **not** own software architecture, project truth, orchestration, or independent review.
 
-```text
-e9bd49f3c20949031c479316bc692150523119c8ce4a0558cac97d9bdc6a0d59  bundled independent-review/SKILL.md
-```
+### `core-first-verifier`
 
-This is an intentional semantic-portability edit, not an accidental source drift.
+Preserved from v0.4.0 semantics: fresh read-only Core-First conformance verification.
+
+### `independent-review`
+
+Preserved from v0.4.0 semantics: anti-anchored evidence-based review for consequential/high-risk/difficult-to-verify/materially blocked work.
+
+## Boundary
+
+Portable Skill semantics remain provider-neutral. Codex packaging metadata and Windows installation are host adapters only. No MCP, browser implementation, computer-use implementation, or provider-specific interaction technology is required by the governance model.

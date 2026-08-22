@@ -1,0 +1,23 @@
+{
+  "skill_name": "independent-review",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "routine-change-no-review",
+      "prompt": "A one-line internal typo fix has focused tests and no material risk.",
+      "expected": {
+        "independent_review_required": false
+      }
+    },
+    {
+      "id": "high-risk-review",
+      "prompt": "A consequential implementation change affects production-critical state transitions and passed the primary agent's own checks.",
+      "expected": {
+        "independent_review_required": true,
+        "fresh_context_preferred": true,
+        "read_only": true,
+        "anti_anchored": true
+      }
+    }
+  ]
+}

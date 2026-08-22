@@ -1,0 +1,241 @@
+---
+name: observable-product-verification
+description: Verify software behavior from the real user or external-system boundary instead of inferring success from code, builds, tests, or tool actions alone. Use for interactive UI/web/desktop/game behavior, CLI/API/integration workflows, persistence, visual/runtime state, or any completion claim whose truth depends on an executable observable outcome. Do not use as an architecture owner, a full regression mandate, or a reason to expand write scope to unrelated defects.
+metadata:
+  short-description: Verify real observable product outcomes
+---
+
+# Observable Product Verification
+
+## Purpose
+
+Verify the **product outcome**, not merely the implementation or the action used to exercise it.
+
+This Skill is provider-, framework-, and tool-neutral. Use whatever interaction and observation capabilities are actually available in the current environment. It does not require or prescribe a particular browser, computer-control system, protocol, script, screenshot tool, or model provider.
+
+Project/repository authorities remain project truth. This Skill owns only the verification procedure for observable runtime claims.
+
+## Core invariant
+
+```text
+Implementation evidence != runtime evidence
+Tool/action success       != intended outcome
+Runtime evidence          != every broader product claim
+```
+
+A successful click, key/input dispatch, request send, command invocation, build, process start, screenshot capture, or test harness action proves only what was actually observed from it.
+
+## Observable boundary
+
+Choose the closest practical real boundary that corresponds to the claim.
+
+Examples of boundary classes, not mandated tools:
+- interactive application → live user-facing UI/runtime;
+- game/simulation → live executable input, state, timing, physics/animation outcome;
+- CLI → actual command invocation and externally visible output/effects;
+- API/service → actual contract request/response and material external side effect/state when required;
+- library/SDK → realistic consumer/integration path through the public contract;
+- automation/batch → representative real input through the normal path to produced output/side effects.
+
+Use a narrower proxy only for a narrower claim. Do not silently substitute a weaker surface for the one the requirement actually depends on.
+
+## Procedure
+
+### 1. Derive the observable claim
+
+State what must be true from the user/external point of view.
+
+Prefer an explicit form:
+
+```text
+START STATE
+ACTION / INPUT
+EXPECTED OBSERVABLE DELTA
+SETTLED SUCCESS STATE
+```
+
+Examples:
+- slider begins at value A → user changes it → control visibly moves/value changes → dependent state reflects B;
+- player is grounded → jump input → player rises → returns to valid grounded state without falling through geometry;
+- CLI receives input → command exits → expected output/file/state exists;
+- API receives request → documented response occurs → required persistent/external effect is visible.
+
+### 2. Select evidence strength
+
+Use the strongest practical evidence appropriate to the claim, while keeping cost and risk proportional.
+
+Do not claim a real user/external outcome from static inspection alone when the executable boundary can reasonably be exercised.
+
+If the required surface cannot be exercised, return `INCONCLUSIVE` for that observable claim and state the missing capability/evidence. Continue to report narrower static/unit/build facts separately if they were actually proven.
+
+### 3. Establish the before state
+
+Observe enough initial state to distinguish success from a no-op, stale state, already-satisfied state, or unrelated transition.
+
+Where relevant record:
+- visible/returned value;
+- current screen/state/mode;
+- persisted value before the action;
+- entity position/state;
+- relevant external side-effect baseline.
+
+### 4. Perform the user/external action
+
+Exercise the normal product path rather than a private implementation shortcut when the requirement is about the normal product path.
+
+The action itself is not the verdict.
+
+### 5. Observe the settled after state
+
+Verify the expected observable delta and the resulting stable/meaningful state.
+
+Do not stop at the immediate frame/event when behavior includes:
+- animation or transition timing;
+- asynchronous/network work;
+- navigation;
+- physics;
+- delayed state propagation;
+- persistence/save/reload;
+- queued/background effects.
+
+Wait/advance only as much as needed to judge the intended outcome. Avoid arbitrary long sleeps when a meaningful state signal is available.
+
+### 6. Use already-acquired evidence fully
+
+When a product surface, screenshot/image, runtime state, log/output view, or other evidence is already acquired for the target check, inspect the directly available surrounding state for **obvious material contradictions or defects** instead of tunnel-visioning on one assertion.
+
+This is **ambient observation**, not a full audit.
+
+Examples:
+- while verifying one button, notice visibly clipped navigation or a missing required image already present in the same view;
+- while verifying jump behavior, notice the actor falls through the floor, camera breaks, or required HUD state is clearly invalid in the same run;
+- while checking a command result, notice the same output already exposes an error or contradictory state.
+
+Do not spend materially more time searching unrelated areas merely because ambient observation is required.
+
+### 7. Perform cheap bounded adjacent exploration
+
+After the target assertion, perform a small number of natural adjacent actions when all are true:
+- they are cheap and low risk;
+- they are directly connected to the exercised workflow/state;
+- they have a reasonable chance of revealing an integration/regression failure;
+- they do not require broad unrelated setup.
+
+Examples:
+- change → save → reopen/read back;
+- move → jump → land → move again;
+- open → modify → confirm → reopen;
+- submit → navigate to resulting state → refresh/reload when persistence is part of the flow.
+
+Do not turn every local fix into a complete product regression test. Stop when the target and the smallest useful adjacent path are proven or when additional exploration has sharply diminishing value.
+
+### 8. Classify findings without expanding authority
+
+Classify material observations by relationship to the current verification scope:
+
+- `TARGET_FAILURE` — the requirement/acceptance claim itself fails.
+- `COUPLED_REGRESSION` — a directly connected behavior is broken or likely broken by the current change/path.
+- `ADJACENT_DEFECT` — a real defect is visible in the already-exercised local surface but is not required to prove the target.
+- `UNRELATED_OBSERVATION` — a plausible issue outside the current change/acceptance boundary.
+
+Broad observation does **not** grant broad write scope.
+
+- Target failures and coupled regressions normally block the relevant completion claim.
+- Adjacent defects should be reported and fixed only when the current authority/scope or project acceptance requires it.
+- Unrelated observations should be reported/recorded when material, not silently converted into opportunistic cleanup.
+
+If the acceptance requirement itself is broad (for example, an entire screen/user journey must match an approved state), then defects within that required whole are target failures, not merely adjacent findings.
+
+### 9. Route correction through existing project truth
+
+When a finding requires investigation/correction, reuse existing navigation and architecture artifacts before broad source discovery.
+
+Possible project-provided routes include:
+- project/repository index;
+- responsibility/system map;
+- capability/contract map;
+- runtime/integration trace;
+- user-flow/acceptance mapping;
+- Blueprint/registry;
+- implementation anchors.
+
+Use this pattern:
+
+```text
+observable failure
+→ existing route/index/trace
+→ likely implementation anchor
+→ validate anchor against current code/runtime
+→ broaden discovery only if missing/ambiguous/stale/contradicted
+```
+
+Do not create a second QA/debug architecture graph when the project already has canonical routing artifacts.
+
+When responsibility ownership, reuse, capability boundaries, or architecture are material, hand the preserved observable evidence to the primary agent's canonical Core-First reverse-debug procedure. If the host cannot concurrently load both procedures, finish this verification with evidence/findings; the primary agent then loads Core-First and continues from that evidence.
+
+### 10. Re-test after correction
+
+After a correction, repeat:
+1. the exact previously failing observable path;
+2. the settled-state check;
+3. the smallest relevant adjacent regression path.
+
+Do not substitute a new static/code proof for the runtime failure that originally motivated the correction.
+
+## Status rules
+
+For the target observable claim, return one status:
+- `VERIFIED` — the required observable outcome was exercised on an appropriate real boundary and matched the requirement with sufficient evidence;
+- `FAILED` — the target outcome or a completion-blocking coupled behavior demonstrably failed;
+- `INCONCLUSIVE` — the necessary surface, state, capability, or trustworthy evidence was unavailable/ambiguous enough that the claim cannot be verified.
+
+Absence of evidence is never `VERIFIED`.
+
+Ambient/adjacent findings are reported separately and affect the target status only when they contradict the target acceptance scope or materially block the required user/external journey.
+
+## Output contract
+
+Use a compact evidence-oriented shape:
+
+```text
+STATUS: VERIFIED | FAILED | INCONCLUSIVE
+CLAIM: ...
+SURFACE/BOUNDARY: ...
+
+EXERCISE:
+- before: ...
+- action: ...
+- settled after: ...
+- adjacent checks: ...
+
+FINDINGS:
+- TARGET_FAILURE | COUPLED_REGRESSION | ADJACENT_DEFECT | UNRELATED_OBSERVATION: ...
+
+EVIDENCE:
+- ...
+
+LIMITATIONS:
+- ...
+```
+
+Omit empty sections except `STATUS`, `CLAIM`, `SURFACE/BOUNDARY`, and `EVIDENCE`.
+
+## Safety and side effects
+
+Prefer reversible, isolated, non-destructive verification paths. Do not create irreversible external side effects merely to gain stronger evidence unless the user/project explicitly authorizes that operation or a safe test environment makes the action appropriate.
+
+When realistic verification could mutate important data, spend money, contact real users, publish content, or trigger other consequential effects, use the project's safe test/sandbox path where available or report the limitation.
+
+## Anti-patterns
+
+Do not:
+- infer product success from code appearance alone;
+- infer outcome success from a successful interaction/tool call;
+- stop at the first transient frame when settled behavior matters;
+- inspect only the single target pixel/element while ignoring obvious contradictions already visible in the same acquired evidence;
+- perform a full-product exploratory audit for every local change;
+- fix unrelated observations without scope/authority;
+- silently downgrade a required real-surface check to static evidence;
+- create a parallel project map or ownership graph for QA;
+- bypass the normal product path to prove a user-facing workflow unless the requirement explicitly concerns the bypassed interface;
+- require any specific provider, browser, computer-use implementation, scripting language, tool protocol, or interaction technology.

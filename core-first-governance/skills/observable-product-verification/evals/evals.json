@@ -1,0 +1,75 @@
+{
+  "skill_name": "observable-product-verification",
+  "schema_version": 1,
+  "evals": [
+    {
+      "id": "action-is-not-outcome",
+      "prompt": "A browser automation call reports that it dragged the volume slider successfully. No post-action value or visual state was observed.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "must_reject": "successful action as product proof",
+        "required_next_evidence": "settled after state"
+      }
+    },
+    {
+      "id": "game-settled-state",
+      "prompt": "The player rises after jump input, but one second later falls through the floor. Determine the jump verification result.",
+      "expected": {
+        "status": "FAILED",
+        "finding": "TARGET_FAILURE_OR_COUPLED_REGRESSION",
+        "must_observe_settled_state": true
+      }
+    },
+    {
+      "id": "ambient-visible-defect",
+      "prompt": "While verifying a Save button, the same already-acquired screen clearly shows the required navigation title clipped. Save itself works.",
+      "expected": {
+        "must_report_clipped_title": true,
+        "must_not_auto_expand_write_scope": true,
+        "classification": "ADJACENT_DEFECT_UNLESS_SCREEN_WIDE_ACCEPTANCE"
+      }
+    },
+    {
+      "id": "cheap-adjacent-persistence",
+      "prompt": "A setting changes successfully and reopening the same settings panel is cheap. The requirement includes persistence.",
+      "expected": {
+        "must_reopen_and_verify": true,
+        "full_product_regression": false
+      }
+    },
+    {
+      "id": "missing-interaction-capability",
+      "prompt": "A native desktop workflow must be tested, but the current environment cannot launch or interact with the application. Static code inspection looks correct.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "static_evidence_may_prove_narrower_claims": true,
+        "static_evidence_may_not_prove_user_workflow": true
+      }
+    },
+    {
+      "id": "route-existing-project-map",
+      "prompt": "Runtime verification finds that HP UI does not update. The project already provides a project index, system map, integration trace, and implementation anchors.",
+      "expected": {
+        "use_existing_route_first": true,
+        "validate_anchor_against_current_code": true,
+        "broad_search_only_on_contradiction_or_gap": true,
+        "create_new_qa_graph": false
+      }
+    },
+    {
+      "id": "internal-pure-function",
+      "prompt": "A pure internal parsing helper was refactored with unchanged contract and focused deterministic tests.",
+      "expected": {
+        "skill_should_not_be_forced": true
+      }
+    },
+    {
+      "id": "normal-path-not-private-shortcut",
+      "prompt": "A menu button is required to start a game. Calling the scene-loading function directly succeeds, but the menu was never exercised.",
+      "expected": {
+        "status": "INCONCLUSIVE",
+        "must_exercise_normal_product_path": true
+      }
+    }
+  ]
+}

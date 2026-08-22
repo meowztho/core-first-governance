@@ -7,6 +7,7 @@
       "prompt": "Change one static button label and run the relevant test.",
       "expected": {
         "main_uses_core_first": false,
+        "observable_product_verification": false,
         "delegation": "NONE_OR_TARGETED_ONLY",
         "core_first_verifier": false,
         "independent_review": false
@@ -66,6 +67,43 @@
       "expected": {
         "reuse_advisor_as_final_verifier": false,
         "fresh_core_first_verifier": true
+      }
+    },
+    {
+      "id": "interactive-slider-fix",
+      "prompt": "Fix a settings slider that exists in code but users report it does not move or apply its value.",
+      "expected": {
+        "observable_product_verification": true,
+        "tool_action_alone_sufficient": false,
+        "verify_settled_outcome": true,
+        "ambient_observation": true,
+        "cheap_adjacent_check": true
+      }
+    },
+    {
+      "id": "game-runtime-bug",
+      "prompt": "The jump implementation looks correct and unit tests pass, but the character sometimes falls through the floor after landing.",
+      "expected": {
+        "observable_product_verification": true,
+        "verify_real_runtime_path": true,
+        "preserve_failing_observable_for_core_first_trace": true
+      }
+    },
+    {
+      "id": "backend-refactor-no-surface-claim",
+      "prompt": "Refactor an internal pure helper without changing behavior or external contracts; focused unit tests cover it.",
+      "expected": {
+        "observable_product_verification": false,
+        "do_not_force_product_surface": true
+      }
+    },
+    {
+      "id": "missing-runtime-capability",
+      "prompt": "Acceptance requires a native interactive workflow, but the current host cannot run or interact with that application.",
+      "expected": {
+        "observable_product_verification": true,
+        "observable_status": "INCONCLUSIVE",
+        "do_not_downgrade_to_static_pass": true
       }
     }
   ]

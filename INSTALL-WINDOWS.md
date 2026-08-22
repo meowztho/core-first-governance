@@ -1,6 +1,6 @@
-# Windows installation — Codex host adapter
+# Windows installation — Codex UI
 
-This release targets the Codex UI / ChatGPT desktop plugin directory. No `codex` CLI installation command is required.
+This release targets the Codex UI / ChatGPT desktop plugin directory. No Codex CLI installation command is required.
 
 ## Install
 
@@ -30,6 +30,8 @@ with source path:
 ```
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
+
+v0.5.0 should expose five Skills, including `observable-product-verification`.
 
 ## Optional Authenticode signing
 
