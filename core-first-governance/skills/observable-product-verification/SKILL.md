@@ -182,6 +182,24 @@ After a correction, repeat:
 
 Do not substitute a new static/code proof for the runtime failure that originally motivated the correction.
 
+## Raw evidence traceability
+
+For every **material** observable completion claim, keep the raw evidence traceable at least through the current completion/review boundary. A later reviewer/primary agent must be able to determine what actually established the before state, action, settled-after state, and material adjacent findings instead of receiving only `VERIFIED | FAILED | INCONCLUSIVE`.
+
+Prefer reuse over new machinery:
+1. if the project already has an Evidence store, acceptance record, CI/test artifact location, project-index evidence pointer, or equivalent canonical mechanism, use it according to the project's rules;
+2. otherwise retain the raw evidence in the current working/session artifact boundary and return precise references/locations sufficient for the primary agent or reviewer to inspect it;
+3. do **not** create a new repository-wide evidence database, QA graph, screenshot archive, or persistence framework solely to satisfy this Skill.
+
+Evidence provenance should identify, where applicable:
+- before-state evidence/reference;
+- action/input actually exercised;
+- settled-after evidence/reference;
+- material adjacent-check evidence/reference;
+- revision/run/scope identity needed to avoid confusing stale evidence with the current change.
+
+If raw evidence cannot be retained or referenced reliably enough for a material claim, state that limitation. Do not strengthen the status beyond what the remaining evidence supports.
+
 ## Status rules
 
 For the target observable claim, return one status:
@@ -212,7 +230,9 @@ FINDINGS:
 - TARGET_FAILURE | COUPLED_REGRESSION | ADJACENT_DEFECT | UNRELATED_OBSERVATION: ...
 
 EVIDENCE:
-- ...
+- raw/provenance refs: ...
+- before ref: ...
+- settled-after ref: ...
 
 LIMITATIONS:
 - ...
@@ -237,5 +257,7 @@ Do not:
 - fix unrelated observations without scope/authority;
 - silently downgrade a required real-surface check to static evidence;
 - create a parallel project map or ownership graph for QA;
+- persist every verification into a new evidence system when the project has no such requirement;
+- return only an interpreted status for a material observable claim when the raw evidence cannot be traced through the current completion/review boundary;
 - bypass the normal product path to prove a user-facing workflow unless the requirement explicitly concerns the bypassed interface;
 - require any specific provider, browser, computer-use implementation, scripting language, tool protocol, or interaction technology.

@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.5.1 should expose five Skills, including `observable-product-verification`.
+v0.6.0 should expose the same five Skills, with grounded execution preflight, two-phase Core-First verification, and evidence traceability integrated into their existing owners.
 
 ## Optional Authenticode signing
 

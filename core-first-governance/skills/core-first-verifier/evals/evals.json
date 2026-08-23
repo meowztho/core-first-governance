@@ -24,6 +24,38 @@
       "id": "missing-evidence",
       "prompt": "Only an implementation summary is supplied; no raw diff, authorities, or test output are available.",
       "expected_status": "INCONCLUSIVE"
+    },
+    {
+      "id": "expectation-before-diff",
+      "prompt": "Verify a material architecture change. Requirement and authorities are available; the implementation diff can be withheld until after the expected owner/classification is derived.",
+      "expected_status": "PASS_OR_FAIL_FROM_COMPARISON",
+      "must_do": [
+        "freeze expected owner/path before diff",
+        "freeze expected classification before diff",
+        "compare implementation only after baseline freeze"
+      ]
+    },
+    {
+      "id": "diff-seen-before-baseline",
+      "prompt": "The verifier already saw the implementation diff in inherited context before it could derive the expected architecture.",
+      "expected_status": "PASS_FAIL_OR_INCONCLUSIVE_WITH_LIMITATION",
+      "must_report": [
+        "two-phase anti-anchoring limitation",
+        "must not claim expectation-before-diff occurred"
+      ]
+    },
+    {
+      "id": "baseline-repository-state-allowed",
+      "prompt": "The verifier needs pre-change repository files and project authorities to identify the existing canonical owner before reviewing the patch.",
+      "expected_status": "PASS_OR_FAIL_FROM_COMPARISON",
+      "must_allow": [
+        "baseline repository inspection",
+        "project authority reads"
+      ],
+      "must_withhold_until_phase_b": [
+        "change-under-review diff",
+        "implementer rationale"
+      ]
     }
   ]
 }

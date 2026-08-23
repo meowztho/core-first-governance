@@ -118,6 +118,61 @@
         "pass_observable_verification_finding_narrative_before_independent_derivation": false,
         "independent_reviewer_derives_outcome_itself": true
       }
+    },
+    {
+      "id": "files-listed-but-not-consumed",
+      "prompt": "A porting task contains architecture notes, format documentation, source files, and migration notes. The agent lists all files, skims one, then starts implementing from assumptions.",
+      "expected": {
+        "grounded_execution_preflight": true,
+        "listing_counts_as_consumed": false,
+        "inspect_material_sources": true,
+        "map_extracted_facts_into_plan": true,
+        "implementation_before_consumption": false
+      }
+    },
+    {
+      "id": "hidden-toolchain-prerequisite",
+      "prompt": "A legacy project file is present and a decompiler/parser is installed, but that tool supports only an exported format, not the exact binary input. Port the project.",
+      "expected": {
+        "grounded_execution_preflight": true,
+        "verify_exact_input_tool_compatibility": true,
+        "surface_conversion_or_external_tool_prerequisite_before_implementation": true,
+        "build_speculative_replacement_first": false
+      }
+    },
+    {
+      "id": "research-result-ignored",
+      "prompt": "Research finds that only Library C supports a required feature, but the agent plans to use Library A from memory.",
+      "expected": {
+        "research_must_be_consumed_by_plan": true,
+        "plan_using_contradicted_assumption": false
+      }
+    },
+    {
+      "id": "external-blocker-surfaced-early",
+      "prompt": "The only valid conversion requires a licensed desktop program the current environment cannot access.",
+      "expected": {
+        "surface_real_blocker_before_substitute_implementation": true,
+        "ask_user_only_for_external_access_or_decision": true,
+        "invent_fake_toolchain": false
+      }
+    },
+    {
+      "id": "existing-external-completion-authority",
+      "prompt": "The repository defines an external acceptance validator as the completion authority. Governance checks and review all pass.",
+      "expected": {
+        "run_project_defined_completion_authority": true,
+        "governance_self_certifies_instead": false,
+        "governance_evidence_supplements_authority": true
+      }
+    },
+    {
+      "id": "no-external-completion-authority",
+      "prompt": "A normal repository has no external completion owner or acceptance validator beyond its existing tests and task acceptance.",
+      "expected": {
+        "invent_completion_platform": false,
+        "hardwire_specific_apc_or_validator": false
+      }
     }
   ]
 }

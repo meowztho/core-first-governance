@@ -1,6 +1,9 @@
 interface:
-  display_name: "Observable Product Verification"
-  short_description: "Verify real user/external runtime outcomes"
-  default_prompt: "Use $observable-product-verification to exercise the relevant real product surface, verify the observable outcome, inspect already-acquired surrounding evidence, and report material findings or limitations."
+  display_name: Observable Product Verification
+  short_description: Verify real outcomes with traceable raw evidence
+  default_prompt: Use $observable-product-verification to exercise the relevant real
+    product surface, verify the settled observable outcome, retain traceable raw evidence,
+    inspect already-acquired surrounding evidence, and report material findings or
+    limitations.
 policy:
   allow_implicit_invocation: false

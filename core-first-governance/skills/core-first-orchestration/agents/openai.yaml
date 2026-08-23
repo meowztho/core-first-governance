@@ -1,6 +1,8 @@
 interface:
-  display_name: "Core-First Orchestration"
-  short_description: "Route Core-First work, product verification, and reviews"
-  default_prompt: "Use $core-first-orchestration to govern this software task, including Core-First reasoning, delegated-agent context, observable product verification, and review escalation."
+  display_name: Core-First Orchestration
+  short_description: Ground plans, route Core-First work, verification, and reviews
+  default_prompt: Use $core-first-orchestration to ground material plans in required
+    sources/prerequisites, then govern Core-First reasoning, delegated-agent context,
+    observable product verification, completion-authority routing, and review escalation.
 policy:
   allow_implicit_invocation: true

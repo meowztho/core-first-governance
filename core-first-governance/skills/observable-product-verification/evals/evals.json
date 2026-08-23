@@ -70,6 +70,30 @@
         "status": "INCONCLUSIVE",
         "must_exercise_normal_product_path": true
       }
+    },
+    {
+      "id": "material-raw-evidence-traceability",
+      "prompt": "A material UI workflow is VERIFIED with before and settled-after screenshots. No independent review is currently required.",
+      "expected": {
+        "retain_raw_evidence_traceability_through_completion_boundary": true,
+        "status_only_sufficient": false
+      }
+    },
+    {
+      "id": "reuse-existing-evidence-store",
+      "prompt": "The project already has a canonical Evidence/acceptance artifact store for runtime evidence.",
+      "expected": {
+        "use_existing_store": true,
+        "create_second_evidence_system": false
+      }
+    },
+    {
+      "id": "no-evidence-store-no-framework",
+      "prompt": "A small project has no persistent evidence store. A material runtime check produces screenshots in the current session/artifact workspace.",
+      "expected": {
+        "precise_current_artifact_references_acceptable": true,
+        "invent_repository_evidence_database": false
+      }
     }
   ]
 }

@@ -2,7 +2,7 @@
 name: core-first-verifier
 description: Independently verify whether a software change conforms to the canonical Core-First Extension Architecture method. Use in a fresh read-only verification context after meaningful architecture-, ownership-, reuse-, composition-, provider-, extension-, or core-rule changes, and at architecture milestones. Do not use as the implementation agent or as a substitute for the primary agent's own Core-First reasoning.
 metadata:
-  short-description: Fresh read-only Core-First conformance check
+  short-description: Fresh two-phase Core-First conformance check
 ---
 
 # Core-First Verifier
@@ -15,24 +15,30 @@ You are not the implementation agent, not an architecture co-owner, and not the 
 
 "Fresh" is provider-neutral: use a separate delegated-agent context, session, model context, or equivalent isolation mechanism that has not participated in the implementation reasoning. If the host cannot provide this, state the limitation and do not claim full independence.
 
-## Mandatory fresh reads
+## Mandatory fresh reads and evidence ordering
 
 At the beginning of every verification turn:
 1. identify the repository/project root and applicable instructions;
 2. load the canonical `core-first-extension-architecture` Skill **fresh** using host-native Skill attachment/injection or a resolved installed `SKILL.md` read; do not rely on memory or a summary;
 3. read the project authorities required for the changed responsibilities/contracts;
-4. inspect the raw implementation diff/files relevant to the verification;
-5. inspect actual verification/test/runtime evidence supplied or available.
+4. inspect baseline/pre-change repository information needed to identify the existing owner/path when that state is available;
+5. **freeze the expectation baseline before inspecting the change-under-review diff/patch or implementation conclusion**;
+6. only then inspect the raw implementation diff/files and actual verification/test/runtime evidence for comparison.
 
-If the required Core-First Skill cannot be resolved, attached, or read, return `INCONCLUSIVE` rather than pretending the method was loaded.
+If the required Core-First Skill cannot be resolved, attached, or read, return `INCONCLUSIVE` rather than pretending the method was loaded. If the host/context already exposed the change-under-review before the expectation baseline could be frozen, record that anti-anchoring limitation explicitly; do not claim the full two-phase isolation occurred.
 
 ## Anti-anchoring input policy
 
-Prefer these inputs:
+Use inputs in the phase that minimizes anchoring while preserving project truth.
+
+**Phase A inputs:**
 - original user/product requirement;
 - complete applicable project instructions;
 - relevant canonical project authorities;
-- raw Git diff and relevant files;
+- baseline/pre-change repository state needed to identify the existing owner/path when available.
+
+**Phase B inputs:**
+- raw Git diff/change-under-review files;
 - actual test/verification commands and their outputs;
 - relevant runtime/user-surface evidence.
 
@@ -43,6 +49,26 @@ Do not request or rely on:
 - prior Core-First verifier conclusions.
 
 Derive the expected architecture path independently from the raw requirement and authorities.
+
+## Two-phase anti-rationalization protocol
+
+### Phase A — Freeze the expectation baseline
+
+Before inspecting the change-under-review diff/patch when the host can enforce the ordering, write down:
+- expected canonical responsibility owner and runtime/data path;
+- expected smallest semantic change classification;
+- expected capability/module/provider/consumer path where material;
+- allowed writes/variation and forbidden bypasses/foreign authoritative-state writes;
+- evidence that would be required to prove conformance;
+- any uncertainty that cannot be resolved from requirement, authorities, and baseline repository state.
+
+Mark this baseline as frozen. Do not revise it merely to fit the implementation. If later evidence proves a project authority/baseline assumption was stale or wrong, record the reason for the baseline correction explicitly before continuing.
+
+### Phase B — Compare the implementation
+
+Only after Phase A, inspect the actual diff/files/tests/runtime evidence. Compare the implementation to the frozen expectation and explain material mismatches from evidence.
+
+Fresh context and two-phase ordering solve different anchoring risks: use both when feasible. A fresh verifier that sees the diff before deriving the expected owner/path can still rationalize the implementation after the fact.
 
 ## Verification procedure
 
@@ -89,7 +115,9 @@ When rejecting an apparent issue, note the evidence briefly under `Validated non
 ```text
 STATUS: PASS | FAIL | INCONCLUSIVE
 SCOPE: ...
+EXPECTATION BASELINE FROZEN BEFORE CHANGE EVIDENCE: YES | NO
 EXPECTED OWNER/PATH: ...
+EXPECTED CLASSIFICATION: ...
 
 FINDINGS:
 - CFV-01 ...
@@ -104,7 +132,7 @@ UNCERTAINTIES / MISSING EVIDENCE:
 - ...
 ```
 
-Omit empty sections except `STATUS`, `SCOPE`, and `EVIDENCE CHECKED`.
+Omit empty sections except `STATUS`, `SCOPE`, `EXPECTATION BASELINE FROZEN BEFORE CHANGE EVIDENCE`, and `EVIDENCE CHECKED`.
 
 ## Read-only boundary
 
