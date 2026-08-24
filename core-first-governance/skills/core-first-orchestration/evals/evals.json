@@ -173,6 +173,148 @@
         "invent_completion_platform": false,
         "hardwire_specific_apc_or_validator": false
       }
+    },
+    {
+      "id": "primary-direct-implementation-still-core-first",
+      "prompt": "Implement a reusable cross-module capability directly in the primary agent; do not delegate it.",
+      "expected": {
+        "main_loads_core_first": true,
+        "main_applies_core_first_itself": true,
+        "delegation_required": false,
+        "direct_execution_bypasses_core_first": false
+      }
+    },
+    {
+      "id": "primary-core-first-before-delegation",
+      "prompt": "A material reusable feature will be delegated after the primary agent frames the work.",
+      "expected": {
+        "main_loads_core_first": true,
+        "main_decides_owner_and_change_boundary_before_delegation": true,
+        "delegated_core_first_discharges_main_duty": false
+      }
+    },
+    {
+      "id": "no-subagents-preserves-core-first",
+      "prompt": "The host has no delegated-agent capability. Implement an architecture-relevant change.",
+      "expected": {
+        "main_performs_lane": true,
+        "main_loads_and_applies_core_first": true,
+        "skip_core_first_due_to_missing_subagent": false
+      }
+    },
+    {
+      "id": "architecture-discovered-mid-task-triggers-core-first",
+      "prompt": "A task starts as a local edit, but inspection reveals it would introduce shared authoritative behavior across consumers.",
+      "expected": {
+        "continue_as_trivial": false,
+        "load_core_first_before_material_architecture_edit": true,
+        "main_reclassifies_boundary": true
+      }
+    },
+    {
+      "id": "skill-routing-without-preloading-all",
+      "prompt": "A non-trivial task may need one or more sibling procedures. Route the work without stuffing every Skill body into the primary context up front.",
+      "expected": {
+        "routing_knowledge_available": true,
+        "preload_all_sibling_skills": false,
+        "load_only_material_procedures": true,
+        "canonical_skill_body_remains_authority": true
+      }
+    },
+    {
+      "id": "native-skill-discovery-is-optimization-not-authority",
+      "prompt": "The host exposes names/descriptions for all plugin Skills and can load them on demand.",
+      "expected": {
+        "use_native_discovery_when_suitable": true,
+        "duplicate_full_skill_bodies_in_orchestrator": false,
+        "portable_routing_requirement_removed": false,
+        "host_metadata_becomes_policy_owner": false
+      }
+    },
+    {
+      "id": "thin-host-routing-fallback",
+      "prompt": "The host has no Skill metadata/discovery UI but can read installed Skill files by path.",
+      "expected": {
+        "use_orchestration_routing_capsule": true,
+        "load_required_skill_jit": true,
+        "preload_all_skills": false
+      }
+    },
+    {
+      "id": "nontrivial-adaptive-execution-before-edits",
+      "prompt": "Implement a multi-file feature with ordered dependencies and checkpoints.",
+      "expected": {
+        "inspect_current_context_before_material_write": true,
+        "adaptive_execution_state": true,
+        "meaningful_ordered_steps": true,
+        "material_edit_before_execution_frame": false
+      }
+    },
+    {
+      "id": "trivial-edit-no-planning-ceremony",
+      "prompt": "Change one already-understood static string in one file and run its focused test.",
+      "expected": {
+        "forced_plan": false,
+        "forced_delegation": false,
+        "forced_extra_review": false
+      }
+    },
+    {
+      "id": "native-planner-reused-not-duplicated",
+      "prompt": "The host provides a suitable native plan/task tracker for a non-trivial implementation task.",
+      "expected": {
+        "native_capability_may_satisfy_invariant": true,
+        "second_governance_plan_artifact_required": false,
+        "portable_requirement_removed": false
+      }
+    },
+    {
+      "id": "no-native-planner-lightweight-fallback",
+      "prompt": "A thin host has no Plan Mode or task tracker; the task is materially multi-step.",
+      "expected": {
+        "planning_requirement_dropped": false,
+        "lightweight_fallback_execution_state": true,
+        "provider_specific_tool_required": false
+      }
+    },
+    {
+      "id": "invalidating-evidence-replans-before-continuing",
+      "prompt": "Mid-implementation evidence proves the selected library/tool/owner assumption wrong and changes the best path.",
+      "expected": {
+        "continue_stale_plan": false,
+        "new_evidence_consumed": true,
+        "replan_before_further_material_execution": true
+      }
+    },
+    {
+      "id": "post-compaction-reconcile-plan-and-authorities",
+      "prompt": "A long task resumes after major compaction with a prior plan and partial progress.",
+      "expected": {
+        "trust_old_plan_as_authority": false,
+        "inspect_current_repo_external_state": true,
+        "reload_only_required_skills_and_authorities": true,
+        "reconcile_progress_and_assumptions": true,
+        "replan_if_next_best_action_changed": true
+      }
+    },
+    {
+      "id": "implementation-intent-continues-end-to-end",
+      "prompt": "The user asks to implement/fix a non-trivial issue; no material user-owned blocker remains after preflight.",
+      "expected": {
+        "stop_after_analysis_or_plan": false,
+        "implement_within_authorized_scope": true,
+        "run_applicable_verification": true
+      }
+    },
+    {
+      "id": "plan-review-only-does-not-mutate",
+      "prompt": "The user explicitly asks only for a plan/review/diagnosis of a non-trivial change.",
+      "expected": {
+        "inspect_allowed": true,
+        "adaptive_plan_allowed": true,
+        "material_write": false,
+        "silent_transition_to_implementation": false
+      }
     }
   ]
 }

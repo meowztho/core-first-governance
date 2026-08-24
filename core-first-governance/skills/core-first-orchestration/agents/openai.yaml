@@ -1,8 +1,6 @@
 interface:
   display_name: Core-First Orchestration
-  short_description: Ground plans, route Core-First work, verification, and reviews
-  default_prompt: Use $core-first-orchestration to ground material plans in required
-    sources/prerequisites, then govern Core-First reasoning, delegated-agent context,
-    observable product verification, completion-authority routing, and review escalation.
+  short_description: Route Skills JIT and maintain adaptive Core-First execution
+  default_prompt: Use $core-first-orchestration to route only the material sibling Skills, apply Core-First in the primary agent whenever architecture is material, ground prerequisites, maintain/reconcile an adaptive execution plan for non-trivial authorized work, and route verification/review only when required.
 policy:
   allow_implicit_invocation: true

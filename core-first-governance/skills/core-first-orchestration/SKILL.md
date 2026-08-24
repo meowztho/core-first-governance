@@ -1,8 +1,8 @@
 ---
 name: core-first-orchestration
-description: Govern the user-facing primary agent's use of Core-First architecture reasoning, grounded execution preflight, delegated-agent routing, context isolation, observable product verification, architecture verification, independent review, and existing external completion authorities. Use for non-trivial software work where ownership, reuse, source consumption, prerequisites/toolchain assumptions, delegation, context loss, user-observable runtime behavior, or review strategy may be material. The primary agent remains the orchestrator and final integrator; this skill is its decision procedure, not a separate orchestrator agent.
+description: Govern the user-facing primary agent's use of Core-First architecture reasoning, grounded execution preflight, progressive Skill routing, adaptive execution/replanning, delegated-agent routing, context isolation, observable product verification, architecture verification, independent review, and existing external completion authorities. Use for non-trivial software work where ownership, reuse, source consumption, prerequisites/toolchain assumptions, multi-step execution, delegation, context loss/compaction, user-observable runtime behavior, or review strategy may be material. The primary agent remains the orchestrator and final integrator; this skill is its decision procedure, not a separate orchestrator agent.
 metadata:
-  short-description: Route Core-First work and verification safely
+  short-description: Route Core-First work with adaptive execution
 ---
 
 # Core-First Orchestration
@@ -24,6 +24,7 @@ A host may call these subagents, child agents, workers, sessions, tools, or some
 The primary agent that receives the user's requirement remains responsible for:
 - understanding the requirement;
 - ensuring material plans are grounded in actually inspected/consumed sources and verified prerequisites before expensive execution;
+- maintaining lightweight adaptive execution state for non-trivial authorized work and replanning when evidence changes the correct path;
 - applying Core-First itself when architecture is material;
 - deciding whether and how to delegate;
 - controlling what context and skill knowledge each delegated agent receives;
@@ -41,6 +42,17 @@ This bundle provides:
 - `observable-product-verification` — canonical procedure for proving user/external observable runtime outcomes without confusing actions, builds, or static evidence with product success;
 - `core-first-verifier` — read-only fresh verification of Core-First conformance;
 - `independent-review` — unbiased review for consequential, high-risk, difficult-to-verify, or materially blocked work.
+
+### Skill routing capsule — progressive disclosure
+
+The primary agent needs **routing knowledge**, not every sibling procedure body. `ROUTING KNOWLEDGE != PROCEDURAL KNOWLEDGE`. Do not preload all sibling Skills.
+
+- `core-first-extension-architecture`: ownership/authoritative state/reuse/composition/capability or extension semantics material → primary agent **MUST load and apply it itself**, before direct implementation or delegation.
+- `observable-product-verification`: a material claim depends on real user/external runtime behavior → primary agent must ensure the procedure occurs.
+- `core-first-verifier`: material architecture/reuse/ownership conformance → use a separate fresh read-only verification context when feasible; never substitute it for the primary agent's Core-First duty.
+- `independent-review`: consequential/high-risk/difficult-to-verify/materially blocked work → use the anti-anchored independent review path, not for routine work.
+
+Prefer host Skill metadata/discovery when available; otherwise this capsule is the fallback. Host metadata is an optimization/projection, not policy authority or a replacement for the canonical Skill body. A native host capability may satisfy a portable requirement; it never erases it. **Reduce duplicate execution, not duplicate requirements.**
 
 When a delegated agent requires a Skill, use the host's strongest reliable mechanism to make that Skill available **fresh**. Prefer, in order:
 1. host-native explicit Skill attachment/injection;
@@ -84,6 +96,12 @@ Also reload the required project authorities affected by the invalidation. Do no
 
 For observable product verification, use current executable-surface evidence. Do not treat an old screenshot, stale runtime capture, or pre-change manual run as proof of the current revision unless the project explicitly establishes that evidence as still valid.
 
+### Context-rot / continuation reconciliation
+
+A large context window is not a reason to preload all Skills/history. Prefer a small stable routing/goal state plus exact JIT reads. Treat remembered Skill content **and the active plan/checklist** as cache, not authority.
+
+After continuation/fresh context, major compaction/context loss, relevant Skill/authority revision, repository/external-state change, or material new evidence: inspect current state; reload only the canonical Skills/authorities required by the active decision; reconcile progress and critical assumptions; and replan before further material execution when the owner, constraints, dependencies, feasibility, acceptance boundary, or next best action changed. Do not replay unrelated history merely to recover confidence.
+
 ## Step 1 — Determine whether Core-First is material
 
 Core-First is material when the task can affect, require, or discover any of the following:
@@ -97,8 +115,9 @@ Core-First is material when the task can affect, require, or discover any of the
 - architecture repair/refactor;
 - a reusable feature whose correct owner/path is not already settled.
 
-For a truly trivial isolated edit with no material ownership/reuse/system-boundary question, do not force architecture machinery. Use the smallest relevant verification.
+If Core-First is material, the primary agent MUST load and apply `core-first-extension-architecture` itself before it commits to an ownership/change boundary, whether it will implement directly or delegate. Do not defer that responsibility to a child/advisor/verifier.
 
+For a truly trivial isolated edit with no material ownership/reuse/system-boundary question, do not force architecture machinery. Use the smallest relevant verification. If a later discovery crosses an architecture boundary, stop treating the task as trivial and apply Core-First before further material architecture work.
 
 ## Step 2 — Grounded execution preflight
 
@@ -158,7 +177,17 @@ Do not invoke it ceremonially for a pure internal refactor, formatting change, i
 
 The `observable-product-verification` Skill owns the detailed evidence procedure and status semantics. Do not restate or approximate that method here.
 
-## Step 4 — Decide whether to delegate
+## Step 4 — Maintain adaptive execution state when work is non-trivial
+
+For meaningfully multi-step, dependent, ambiguous, expensive, restart-sensitive, or checkpoint-heavy **implementation-authorized** work, establish a lightweight execution frame before material edits. It should contain only what helps execution: intended outcome/acceptance boundary, meaningful ordered phases/dependencies, next step, material checkpoints, and plan-invalidating assumptions/blockers. If Step 1 found Core-First material, the primary agent's own Core-First owner/reuse/change-boundary decision MUST inform this frame before implementation or delegation.
+
+Use a suitable native host plan/task tracker when available; do not duplicate it with a second Governance plan artifact. Otherwise keep the simplest equivalent checklist/state. For multi-hour/multi-session/compaction-sensitive work, reuse an existing durable progress mechanism first and create one only when restartability materially benefits.
+
+A plan is provisional execution state, not project truth, architecture ownership, or completion authority. Grounded-preflight facts that materially determine the path must reach `CONSUMED` before expensive execution commits to them.
+
+Execute a meaningful phase → inspect the actual checkpoint → reconcile progress/assumptions. If evidence changes the owner, constraints, dependencies, feasibility, acceptance boundary, or best approach, update/split/merge/reorder the remaining plan **before** further material execution. Otherwise continue safe in-scope work through applicable verification. Skip planning ceremony for truly trivial/single-step work, and do not mutate when the user requested only planning/review/diagnosis/research.
+
+## Step 5 — Decide whether to delegate
 
 Do not delegate merely because the host supports delegated agents. Prefer the primary agent when the work is small, tightly coupled, or cheaper to verify directly.
 
@@ -182,7 +211,7 @@ EXPECTED OUTPUT / EVIDENCE
 
 Give minimum sufficient context, not maximum available context.
 
-## Step 5 — Choose the delegated-agent mode
+## Step 6 — Choose the delegated-agent mode
 
 ### A. Targeted worker — no Core-First Skill by default
 
@@ -224,7 +253,7 @@ Use for bounded evidence gathering: call graph, failing test localization, API b
 
 Give only the evidence question and necessary project context. If the investigator reaches an architecture decision boundary, it returns the evidence and escalates rather than deciding outside its authority.
 
-## Step 6 — Integrate delegated results
+## Step 7 — Integrate delegated results
 
 The primary agent MUST inspect the returned evidence/result and reconcile it with:
 - the original requirement;
@@ -237,7 +266,7 @@ The primary agent MUST inspect the returned evidence/result and reconcile it wit
 
 Do not accept a delegated agent's conclusion merely because it used a Skill.
 
-## Step 7 — Observable product verification gate
+## Step 8 — Observable product verification gate
 
 When Step 3 says observable verification is material, apply `observable-product-verification` using the strongest appropriate interaction/observation capability actually available in the current environment. The sibling Skill owns the exercise method, evidence semantics, ambient observation, bounded adjacent exploration, and `VERIFIED | FAILED | INCONCLUSIVE` status.
 
@@ -252,7 +281,7 @@ If observable verification returns a material defect requiring correction:
 
 If observable verification is `INCONCLUSIVE`, do not report the affected user/external outcome as verified.
 
-## Step 8 — Core-First verification gate
+## Step 9 — Core-First verification gate
 
 Use `core-first-verifier` when a meaningful change materially affects or depends on architecture/reuse/ownership boundaries, including material changes to:
 - canonical ownership or authoritative state paths;
@@ -277,7 +306,7 @@ A persistent Core-First advisor MUST NOT serve as the final Core-First verifier 
 
 If the host cannot create a fresh delegated context, use the strongest available isolation mechanism and state the limitation; do not falsely claim independent freshness.
 
-## Step 9 — Independent review gate
+## Step 10 — Independent review gate
 
 Use `independent-review` according to its own trigger: consequential, high-risk, difficult-to-verify, or materially blocked implementation work. It supplements but never replaces primary verification, observable product verification when required, or Core-First verification.
 
@@ -291,7 +320,7 @@ For independence:
 
 If the project's own applicable instructions explicitly require Core-First, do not hide that project requirement from the independent reviewer. Context isolation removes prior reasoning/priming; it does not falsify project truth.
 
-## Step 10 — Reconcile findings
+## Step 11 — Reconcile findings
 
 The primary agent owns final reconciliation.
 
@@ -303,7 +332,7 @@ For each material verifier/reviewer/product-verification finding:
 
 If verification layers disagree, investigate the conflicting evidence. Do not resolve disagreement by majority vote.
 
-## Step 11 — Respect existing external completion authority
+## Step 12 — Respect existing external completion authority
 
 Before self-certifying completion, determine whether the project/repository defines a separate acceptance/completion authority or validator (for example a project acceptance store/validator, CI/release gate, regulated approval process, or another explicit completion owner).
 
@@ -320,11 +349,18 @@ If no separate completion authority exists, do not invent one and do not hardwir
 ```text
 User
   → Primary Agent (user-facing orchestrator + final integrator)
+      → compact Skill routing capsule / native Skill discovery
       → Grounded execution preflight when source/prerequisite uncertainty is material
-      → Core-First itself when architecture is material
-      → Targeted worker: bounded implementation, no Core-First Skill by default
-      → Core-First advisor/worker: architecture reasoning, Core-First Skill fresh
-      → Investigator: bounded evidence, no extra Skill unless needed
+      → Core-First **itself** when architecture is material
+      → adaptive execution state for non-trivial authorized work
+          → execute checkpoint
+          → inspect/reconcile evidence
+          → replan before continuing when the correct path changed
+      → choose direct execution or bounded delegation
+          → Targeted worker: bounded implementation, no Core-First Skill by default
+          → Core-First advisor/worker: architecture reasoning, Core-First Skill fresh
+          → Investigator: bounded evidence, no extra Skill unless needed
+      → integrate/reconcile delegated work
       → Observable product verification when runtime/user outcome is material
       → Fresh Core-First verifier: architecture conformance
       → Fresh independent reviewer: consequential/high-risk unbiased review
@@ -334,7 +370,9 @@ User
 ## Host capability degradation
 
 The governance model is semantic, not tied to one agent runtime. If a host lacks a capability:
-- no delegated agents → primary agent performs the lane itself and uses another fresh context/model only when available and justified;
+- no Skill metadata/discovery → use the orchestration Skill's compact routing capsule, then load only the canonical Skill required by the material trigger;
+- no native plan/task tracker → maintain the simplest equivalent lightweight adaptive execution checklist/state;
+- no delegated agents → primary agent performs the lane itself; **Core-First still applies in the primary context whenever material** and another fresh context/model is used only when available and justified for separate verification/review;
 - no persistent delegated context → use fresh bounded tasks instead;
 - no explicit Skill injection → resolve/read the canonical Skill through the host's available file/context mechanism;
 - no read-only enforcement → instruct read-only behavior and verify no writes occurred; do not claim enforced isolation;
@@ -347,7 +385,11 @@ Do not emulate missing host machinery by inventing a complex orchestration, QA, 
 
 Do not:
 - create a separate "orchestrator agent" that becomes a parallel owner to the primary agent;
-- outsource the primary agent's own Core-First duty;
+- outsource the primary agent's own Core-First duty or treat Core-First as something that only delegated agents perform;
+- preload every sibling Skill or all project history when only one procedure/authority is material;
+- duplicate a suitable native plan/task tracker with a second Governance plan artifact;
+- follow a stale plan after newer evidence/authorities changed the correct path;
+- treat an execution plan as project truth, architecture ownership, or completion authority;
 - treat discovered/listed sources or tools as if their relevant knowledge/capability had been consumed;
 - implement around a material prerequisite assumption that available evidence could cheaply resolve;
 - give every worker every Skill and the entire project history;
@@ -363,7 +405,9 @@ Do not:
 
 Before claiming completion, the primary agent must be able to state from actual evidence:
 - when grounded preflight was material, which critical sources/prerequisites were inspected and how their extracted facts were consumed by the plan;
-- which canonical owner/path the change used when architecture was material;
+- for non-trivial authorized work, what execution frame/checkpoints were used and whether material new evidence required replanning;
+- after compaction/continuation or other material context invalidation, how current repository/authority state was reconciled instead of trusting stale plan/memory;
+- which canonical owner/path the change used when architecture was material and that the primary agent itself applied Core-First rather than only routing it;
 - what was delegated and with which knowledge/authority boundary;
 - what automated/static verification actually ran;
 - whether observable product verification was required, what real boundary was exercised, and its status;
