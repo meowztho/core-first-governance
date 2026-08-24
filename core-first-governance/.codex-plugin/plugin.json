@@ -1,0 +1,22 @@
+{
+  "name": "core-first-governance",
+  "version": "0.7.0",
+  "description": "Provider-neutral governance for progressive Skill routing, adaptive grounded execution, Core-First architecture, observable product verification, delegated work, and evidence-based review.",
+  "skills": "skills",
+  "author": {
+    "name": "meowztho"
+  },
+  "repository": "https://github.com/meowztho/core-first-governance",
+  "interface": {
+    "displayName": "Core-First Governance",
+    "shortDescription": "Adaptive Core-First orchestration and verification governance",
+    "longDescription": "Provider-neutral skills with progressive JIT Skill routing, grounded prerequisite consumption, adaptive execution/replanning, mandatory primary-agent Core-First reasoning when architecture is material, observable runtime/product verification, fresh two-phase architecture conformance checks, and independent review.",
+    "developerName": "meowztho",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills"
+    ],
+    "websiteURL": "https://github.com/meowztho/core-first-governance",
+    "defaultPrompt": "Use $core-first-orchestration to route sibling Skills progressively, apply Core-First in the primary agent when material, ground and adapt non-trivial execution, and invoke verification/review only when required."
+  }
+}
