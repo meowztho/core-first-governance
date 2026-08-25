@@ -75,3 +75,20 @@ For complex/spatial/multi-system/restart-sensitive work, orchestration may exter
 ### Consumer-tool decision
 
 No MCP server or new consumer tool is introduced. The current failure class is solvable by compact Skill guidance plus existing host read/search/visual capabilities. Tooling remains admitted only for a concrete bounded gap where it reduces repeated deterministic work, errors, or context/token cost without creating a parallel owner or general-purpose toolbox.
+
+## v0.10.0
+
+### Evidence-driven debugging
+
+Classification: `EXTEND_EXISTING_CAPABILITY` in `core-first-orchestration`; no new Skill/owner.
+
+A focused JIT debugging reference now requires negative evidence to invalidate the causal premises and dependent hypothesis families it disproves. Visual/runtime source identity is routed from the actual observable owner/path rather than resemblance or visible artifact size alone; effective runtime geometry may differ from declared/local bounds. The rule remains provider/domain neutral.
+
+### Workspace reconciliation after context loss
+
+Continuation/compaction now explicitly uses `WORKSPACE AWARENESS != WORKSPACE HYDRATION`: cheaply rediscover current repository/workspace state and existing routing/working aids first, then JIT-read only material sources. Derived aids remain cache, current authority/runtime state wins, suitable aids are reused, and no parallel helper index/manifest is created merely for discoverability.
+
+### Tool and ownership boundary
+
+No MCP server, computer-use stack, debugging tool, workspace database, sixth Skill, or new architecture owner is introduced. The observed failures are attention/evidence-consumption/context-continuity problems that remain solvable by concise Skill guidance plus host-native read/search/runtime capabilities.
+

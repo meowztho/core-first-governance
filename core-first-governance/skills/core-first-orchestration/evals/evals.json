@@ -384,6 +384,91 @@
         "invent_exact_coordinates_as_authority": false,
         "confirmed_inferred_unknown_distinction": true
       }
+    },
+    {
+      "id": "subtree-falsification-removes-dependent-hypotheses",
+      "prompt": "A runtime artifact is suspected to come from subtree A. The agent hides/disables the entire subtree and the artifact remains unchanged.",
+      "expected": {
+        "subtree_a_eliminated": true,
+        "dependent_hypotheses_removed": true,
+        "continue_variants_of_subtree_a_hypothesis": false,
+        "rederive_search_space_before_more_material_work": true
+      }
+    },
+    {
+      "id": "disproven-hypothesis-family-not-retried",
+      "prompt": "A focused test disproves the premise that the visible defect originates from the match/HUD owner. Several visually similar HUD-related candidates remain imaginable.",
+      "expected": {
+        "visual_similarity_overrides_falsification": false,
+        "generate_more_same_family_variants": false,
+        "active_model_updated_from_evidence": true
+      }
+    },
+    {
+      "id": "visible-footprint-does-not-identify-source-bounds",
+      "prompt": "A large visual artifact is visible, but no node/control has declared bounds matching that artifact size. A smaller child begins exactly at the artifact origin.",
+      "expected": {
+        "require_same_sized_source_object": false,
+        "small_child_remains_candidate": true,
+        "inspect_effective_runtime_geometry": true,
+        "visual_resemblance_alone_identifies_owner": false
+      }
+    },
+    {
+      "id": "effective-runtime-geometry-traces-small-producer",
+      "prompt": "A small declared UI child can be affected by minimum/content sizing, parent layout, overflow/clipping, transforms, or stretch/fit semantics. The visible defect is much larger than its declared size.",
+      "expected": {
+        "declared_size_is_final_geometry": false,
+        "inspect_material_runtime_geometry_semantics": true,
+        "provider_specific_checklist_required": false
+      }
+    },
+    {
+      "id": "post-compaction-discovers-existing-working-aid",
+      "prompt": "Before context compaction the agent created a useful menu_surface_atlas.html. After continuation, memory no longer mentions it, but the file remains in the workspace and is relevant to the current UI task.",
+      "expected": {
+        "trust_memory_for_workspace_contents": false,
+        "cheap_workspace_discovery_first": true,
+        "discover_existing_working_aid": true,
+        "recreate_without_checking": false
+      }
+    },
+    {
+      "id": "workspace-discovery-does-not-load-everything",
+      "prompt": "After compaction a repository contains hundreds of files, several Skills, an index, a Working Atlas, and two sources relevant to the current task.",
+      "expected": {
+        "cheap_discovery_before_loading": true,
+        "load_entire_workspace": false,
+        "load_all_skills": false,
+        "jit_consume_only_material_artifacts": true
+      }
+    },
+    {
+      "id": "existing-working-aid-reused-not-recreated",
+      "prompt": "A current suitable Working Atlas already maps the relevant screen and links its canonical sources. The agent is about to create another atlas after continuation.",
+      "expected": {
+        "reuse_existing_suitable_aid": true,
+        "create_duplicate_aid": false,
+        "working_aid_becomes_authority": false
+      }
+    },
+    {
+      "id": "working-aid-cache-yields-to-current-authority",
+      "prompt": "A pre-compaction Working View says the button is left-aligned, while the current canonical surface authority and runtime state now require right alignment.",
+      "expected": {
+        "working_view_wins": false,
+        "current_authority_runtime_wins": true,
+        "reconcile_or_invalidate_stale_aid": true
+      }
+    },
+    {
+      "id": "compaction-uses-existing-routing-not-broad-rediscovery",
+      "prompt": "After a context reset, a valid project index/routing artifact still points to the current owner and relevant source files.",
+      "expected": {
+        "reuse_existing_route": true,
+        "broad_repository_rediscovery_required": false,
+        "validate_route_against_current_state": true
+      }
     }
   ]
 }

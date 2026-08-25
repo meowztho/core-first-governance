@@ -44,11 +44,15 @@ Implementation-authorized work should continue through safe in-scope implementat
 
 ## Context rot / continuation
 
-After fresh/continued context, major compaction/context loss, relevant Skill/authority revision, repository/external-state change, or material new evidence:
+**WORKSPACE AWARENESS != WORKSPACE HYDRATION.** After fresh/continued context, major compaction/context loss, relevant Skill/authority revision, repository/external-state change, or material new evidence:
 
-1. inspect current repository/external state rather than trusting remembered conversation;
-2. reload only the canonical Skills/authorities required by the active decision;
-3. reconcile completed/remaining work and critical assumptions;
+1. cheaply discover current workspace/repository state before trusting memory: relevant tree/nearby files, Git/current changes, existing routing/progress artifacts and prior working aids/evidence that may matter;
+2. **discover before loading**: read only the canonical Skills, authorities, routes, and working artifacts needed by the active decision;
+3. reconcile completed/remaining work and critical assumptions against current state;
 4. replan before further material execution if the next best action changed.
 
-Do not repopulate context with unrelated Skills/history merely because a large context window exists. A compact current routing/goal state + exact JIT reads is preferred.
+Do not broadly rescan/repopulate context merely to regain confidence. Existing routing/index artifacts should prevent project rediscovery when still valid. A stale Working View/note remains cache; current authority/repository/runtime evidence wins.
+
+### Working-aid discoverability
+
+If a generated Working View or other derived aid is intended to survive continuation/context loss, keep it cheaply discoverable through an **existing** project/task/index/progress mechanism or an obvious stable location. Reuse an existing suitable aid before creating another. Do not create a parallel project index/manifest merely to register helper artifacts.

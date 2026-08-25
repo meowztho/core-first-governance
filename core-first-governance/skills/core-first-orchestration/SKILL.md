@@ -41,11 +41,12 @@ When a canonical Skill must be loaded fresh, prefer: (1) explicit host-native Sk
 Read only the detailed procedure whose trigger is material, **before** crossing that boundary:
 
 - `references/GROUNDED_EXECUTION_PREFLIGHT.md` — multiple/opaque sources, research, migration/port/decompile, toolchain assumptions, or material user-surface/design/layout authority.
-- `references/ADAPTIVE_EXECUTION_AND_CONTEXT.md` — meaningfully multi-step/dependent/expensive/restart-sensitive work; continuation/context loss; optional derived Working View/Atlas when it materially improves reasoning.
+- `references/ADAPTIVE_EXECUTION_AND_CONTEXT.md` — meaningfully multi-step/dependent/expensive/restart-sensitive work; continuation/context loss; optional derived Working View/Atlas when useful.
+- `references/EVIDENCE_DRIVEN_DEBUGGING.md` — active runtime/visual defect investigation where falsification, source identity, or effective runtime geometry is material.
 - `references/DELEGATION_CONTEXT.md` — any delegated implementation/advice/investigation lane.
 - `references/VERIFICATION_AND_COMPLETION_ROUTING.md` — observable product verification, Core-First verifier, Independent Review, finding reconciliation, or project-defined external completion authority.
 
-Do not read all four merely because they exist.
+Do not read all five merely because they exist.
 
 ## Operating sequence
 
@@ -65,9 +66,11 @@ For a truly trivial isolated edit with no material architecture/reuse question, 
 
 If the grounded-preflight trigger is material, read `references/GROUNDED_EXECUTION_PREFLIGHT.md` and satisfy it before expensive execution. Listing a file, search result, library, tool, or log is not the same as understanding or consuming what it proves.
 
-### 4. Frame and reconcile execution
+### 4. Frame, reconcile, and debug from evidence
 
 If work is meaningfully multi-step/dependent/ambiguous/expensive/restart-sensitive, or current state must be recovered after continuation/compaction/new evidence, read `references/ADAPTIVE_EXECUTION_AND_CONTEXT.md`. Use a suitable native plan/task mechanism when available; otherwise the simplest equivalent state. Do not duplicate a native planner with a second Governance artifact.
+
+For active runtime/visual defect investigation where negative evidence can change the causal model, read `references/EVIDENCE_DRIVEN_DEBUGGING.md` before continuing material diagnosis.
 
 ### 5. Choose direct execution or delegation
 
