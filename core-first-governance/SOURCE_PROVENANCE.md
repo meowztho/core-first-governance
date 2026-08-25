@@ -92,3 +92,22 @@ Continuation/compaction now explicitly uses `WORKSPACE AWARENESS != WORKSPACE HY
 
 No MCP server, computer-use stack, debugging tool, workspace database, sixth Skill, or new architecture owner is introduced. The observed failures are attention/evidence-consumption/context-continuity problems that remain solvable by concise Skill guidance plus host-native read/search/runtime capabilities.
 
+## v0.11.0
+
+### Responsibility-relative ownership and role resolution
+
+Classification: `EXTEND_EXISTING_CAPABILITY` in canonical `core-first-extension-architecture`; no new Skill/owner.
+
+Repeated ownership-audit tests exposed a semantic interpretation gap: an agent could decompose responsibilities yet still infer owners from class boundaries/names, treat current code placement as canonical ownership, centralize data while leaving behavior duplicated, or equate capability identity with implementation count.
+
+v0.11.0 hardens the existing architecture owner with these invariants:
+- name the responsibility before declaring an owner;
+- distinguish canonical owner, current carrier/effective decision path, implementation anchor, capability/module/provider, consumer, data/profile, migration target, and unresolved gap;
+- current code location/size/name is evidence of placement, not proof of canonical ownership;
+- parallel owners mean independent active authority over the same responsibility, not multiple controlled providers behind one capability;
+- unresolved ownership stays unresolved until evidence supports the smallest semantic path;
+- centralized data does not centralize duplicated semantic behavior;
+- capability identity is semantic, not a function of implementation count;
+- architectural role is determined by semantics/authority/runtime flow, not symbol naming conventions.
+
+The detailed recovery examples live in the existing `EXTENSION_ARCHITECTURE_METHOD.md` reference. The five-Skill model, orchestration JIT structure, OPV, verifier, independent review, and Skills-only tooling boundary remain unchanged.

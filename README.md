@@ -1,37 +1,37 @@
-# Core-First Governance v0.10.0
+# Core-First Governance v0.11.0
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
 
-## What v0.10.0 changes
+## What v0.11.0 changes
 
-v0.10.0 addresses two empirically observed agent failures without adding a new Skill, MCP server, debugger, workspace database, or general-purpose tool layer.
+v0.11.0 intentionally versions the canonical `core-first-extension-architecture` Skill after repeated ownership-audit tests exposed a semantic interpretation gap. No new Skill, MCP server, ownership tool, or architecture map is added.
 
-### 1. Evidence-driven debugging
-
-A negative test must change the active causal model.
+### Responsibility-first owner resolution
 
 ```text
-observed failure
-→ actual runtime/user surface
-→ existing owner/flow route
-→ candidate producer
-→ effective runtime geometry/state
-→ focused falsification
-→ remove disproven premise + dependent hypothesis family
-→ re-derive next best check
+exact responsibility
+→ current carrier / effective decision path
+→ implementation anchor
+→ canonical owner status
+→ capability / module / provider / consumer / data role
+→ smallest semantic correction or explicit unresolved gap
 ```
 
-Visual resemblance is not source identity, and **visible footprint is not producer bounds**. A small/differently bounded child can create a much larger artifact through layout, minimum/content sizing, overflow/clipping, transforms, stretch/fit/expand behavior, or framework equivalents. The plugin does not hard-code Godot/CSS/UMG/etc.; the agent inspects only the runtime geometry semantics material to the current stack.
+The Skill now makes these distinctions explicit:
 
-### 2. Workspace awareness after context loss
+- **owner is responsibility-relative** — class/file boundaries do not define owner boundaries;
+- **current placement != canonical ownership** — code location is evidence, not authority;
+- **parallel owner != provider variation** — two independent active authorities over the same responsibility conflict, while controlled providers behind one capability do not;
+- **unresolved stays unresolved** — do not invent an owner merely to complete a map;
+- **data != behavior owner** — central values with duplicated consumer-side rule execution are still duplicated behavior;
+- **implementation count != capability identity** — one implementation can realize a real reusable contract, and several implementations can remain variants of one capability;
+- **name != role** — `Service`, `Manager`, `Controller`, `Repository`, `Engine`, `Factory`, `Facade`, `Helper`, `Host`, `Renderer`, etc. neither prove nor disqualify ownership.
 
-```text
-WORKSPACE AWARENESS != WORKSPACE HYDRATION
-```
+Detailed God-class/parallel-owner/gap recovery examples live in the existing JIT method reference rather than expanding Governance with a new procedure owner.
 
-After major compaction/continuation, the agent cheaply rediscovers what currently exists before trusting memory: relevant files/tree, current Git changes, existing project routing/progress artifacts, and prior working aids/evidence likely to matter. It then **discovers before loading** and JIT-reads only material sources.
+### v0.10 behavior remains intact
 
-Existing valid routing prevents broad project rediscovery. A Working View/Atlas remains derived cache; current project/repository/runtime truth wins. If a derived aid is intended to survive continuation, it should be cheaply discoverable through an existing project/task/index/progress mechanism or an obvious stable location. Do not create a second helper index merely to register it.
+Evidence-driven hypothesis invalidation/effective-runtime-geometry routing and cheap post-compaction workspace awareness/JIT re-consumption are unchanged from v0.10.0.
 
 ## Existing v0.9 surface model remains intact
 
@@ -56,14 +56,13 @@ The agent distinguishes `CONFIRMED | INFERRED | UNKNOWN`; relative guidance stay
 
 ## Context budget
 
-The always-loaded kernel remains below the existing v0.8 ceiling. The new debugging discipline is a **separate JIT reference**, so normal non-debug tasks do not preload it.
+Orchestration is byte-identical to v0.10.0, so its permanent/JIT cost does not increase in v0.11.0:
 
-- v0.9 always-loaded kernel: **10,250 bytes**
-- v0.10 always-loaded kernel: **10,594 bytes**
-- v0.10 kernel + five owner-local JIT references: **25,997 bytes**
-- hard ceilings: **11,000-byte kernel**, **4,000 bytes per JIT reference**, **26,500-byte total owner corpus**
+- always-loaded orchestration kernel: **10,594 bytes**
+- kernel + five owner-local JIT references: **25,997 bytes**
+- orchestration ceilings: **11,000-byte kernel**, **4,000 bytes per JIT reference**, **26,500-byte total owner corpus**
 
-The total-corpus ceiling increases only because debugging is now isolated into its own on-demand procedure; it is not an always-loaded context increase.
+The canonical Core-First Skill itself is loaded only when architecture/ownership/reuse is material. Its main body changes from **13,034 bytes (v0.10)** to **14,585 bytes (v0.11)**, a bounded **+1,551 bytes (~11.9%)**. v0.11 adds a hard **15,000-byte Core-First main-Skill ceiling**. Detailed recovery examples remain in the existing method reference instead of the routing kernel.
 
 ## Consumer-tool decision
 
@@ -96,7 +95,7 @@ No bundled:
 | Skill | Canonical responsibility |
 | --- | --- |
 | `core-first-orchestration` | minimal-context routing, grounded/adaptive execution, workspace reconciliation, evidence-driven debugging, delegation/completion routing |
-| `core-first-extension-architecture` | ownership, reuse, composition, capabilities/providers/extensions, reverse-debug architecture path |
+| `core-first-extension-architecture` | responsibility decomposition, owner/role resolution, reuse, composition, capabilities/providers/extensions, reverse-debug architecture path |
 | `observable-product-verification` | real user/external outcomes, whole-surface fidelity, evidence reuse/traceability |
 | `core-first-verifier` | fresh read-only two-phase Core-First conformance |
 | `independent-review` | anti-anchored consequential/high-risk review |
@@ -117,8 +116,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-08-25_v0.10.0.md
-├── RELEASE_AUDIT_v0.10.0.md
+├── CONTEXT_HANDOFF_2026-08-25_v0.11.0.md
+├── RELEASE_AUDIT_v0.11.0.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
@@ -144,14 +143,16 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 
 ## Development rules
 
-1. One canonical owner per durable responsibility.
-2. JIT detail must be explicitly routed; context optimization may not weaken semantics.
-3. Negative evidence must invalidate dependent hypotheses, not merely add another note.
-4. Do not identify visual/runtime sources from resemblance or matching visible size alone.
-5. After context loss, discover current workspace state cheaply before JIT loading; never hydrate everything by default.
-6. Working aids remain cache and reuse existing discoverability/routing mechanisms.
-7. Do not add consumer tools merely because the host/plugin format supports them.
-8. Re-run release + host validation after Skill/manifest changes.
+- Name the responsibility before declaring its owner; current carrier/name/size does not prove canonical ownership.
+- One canonical owner per durable responsibility; keep unresolved gaps explicit until evidence supports a path.
+- Data centralization is not behavior convergence; implementation count does not define capability identity.
+- JIT detail must be explicitly routed; context optimization may not weaken semantics.
+- Negative evidence must invalidate dependent hypotheses, not merely add another note.
+- Do not identify visual/runtime sources from resemblance or matching visible size alone.
+- After context loss, discover current workspace state cheaply before JIT loading; never hydrate everything by default.
+- Working aids remain cache and reuse existing discoverability/routing mechanisms.
+- Do not add consumer tools merely because the host/plugin format supports them.
+- Re-run release + host validation after Skill/manifest changes.
 
 ## License
 
