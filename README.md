@@ -1,12 +1,32 @@
-# Core-First Governance v0.11.0
+# Core-First Governance v0.11.1
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
 
-## What v0.11.0 changes
+## What v0.11.1 changes
 
-v0.11.0 intentionally versions the canonical `core-first-extension-architecture` Skill after repeated ownership-audit tests exposed a semantic interpretation gap. No new Skill, MCP server, ownership tool, or architecture map is added.
+v0.11.1 is a bounded clarification of the v0.11 ownership-resolution model after the same MiniMax regression scenarios exposed one remaining ambiguity: the model could treat good **reuse evidence** (second consumer, distinct lifecycle, interface) as mandatory **owner-admission criteria**. No new Skill, tool, owner type, or architecture artifact is added.
 
-### Responsibility-first owner resolution
+### Owner existence != reusable-seam proof
+
+```text
+Responsibility
+→ test existing owner/capability extension/composition
+→ resolve canonical Owner boundary
+→ define Capability Contract if needed
+→ test reusability separately when material
+```
+
+The Core-First Skill now states explicitly:
+
+- a canonical owner does **not** require a second consumer, second implementation, unique lifecycle, or language-level interface;
+- lifecycle, state proximity, consumer count, and implementation count are evidence, not mandatory owner criteria;
+- second-consumer/provider proof is for **semantic reusability of a seam/capability**, not for proving that a responsibility deserves an owner;
+- a detected ownership gap does not authorize a new owner; existing owner/capability extension/composition and smaller data/module/provider paths are tested first, otherwise the gap stays `UNRESOLVED`;
+- semantic order is `Responsibility → Owner → Capability Contract`; an invented interface cannot manufacture ownership;
+- an unauthorized foreign write is not automatically a second canonical owner;
+- existing project architecture authorities are updated instead of creating a parallel ownership document by default.
+
+### v0.11 responsibility-first owner resolution remains intact
 
 ```text
 exact responsibility
@@ -17,7 +37,7 @@ exact responsibility
 → smallest semantic correction or explicit unresolved gap
 ```
 
-The Skill now makes these distinctions explicit:
+The v0.11 baseline distinctions remain:
 
 - **owner is responsibility-relative** — class/file boundaries do not define owner boundaries;
 - **current placement != canonical ownership** — code location is evidence, not authority;
@@ -56,13 +76,13 @@ The agent distinguishes `CONFIRMED | INFERRED | UNKNOWN`; relative guidance stay
 
 ## Context budget
 
-Orchestration is byte-identical to v0.10.0, so its permanent/JIT cost does not increase in v0.11.0:
+Orchestration is byte-identical to v0.10.0/v0.11.0, so its permanent/JIT cost does not increase in v0.11.1:
 
 - always-loaded orchestration kernel: **10,594 bytes**
 - kernel + five owner-local JIT references: **25,997 bytes**
 - orchestration ceilings: **11,000-byte kernel**, **4,000 bytes per JIT reference**, **26,500-byte total owner corpus**
 
-The canonical Core-First Skill itself is loaded only when architecture/ownership/reuse is material. Its main body changes from **13,034 bytes (v0.10)** to **14,585 bytes (v0.11)**, a bounded **+1,551 bytes (~11.9%)**. v0.11 adds a hard **15,000-byte Core-First main-Skill ceiling**. Detailed recovery examples remain in the existing method reference instead of the routing kernel.
+The canonical Core-First Skill is loaded only when architecture/ownership/reuse is material. Its main body is **14,950 bytes** in v0.11.1 versus **14,585 bytes** in v0.11.0 (**+365 bytes, ~2.5%**) and **13,034 bytes** in v0.10.0. The hard **15,000-byte Core-First main-Skill ceiling** remains unchanged. Detailed examples stay in the existing JIT method reference.
 
 ## Consumer-tool decision
 
@@ -116,8 +136,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-08-25_v0.11.0.md
-├── RELEASE_AUDIT_v0.11.0.md
+├── CONTEXT_HANDOFF_2026-08-25_v0.11.1.md
+├── RELEASE_AUDIT_v0.11.1.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
@@ -144,6 +164,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ## Development rules
 
 - Name the responsibility before declaring its owner; current carrier/name/size does not prove canonical ownership.
+- Owner existence is separate from reuse proof; second consumers, lifecycle, implementation count, or interfaces are evidence rather than mandatory owner criteria.
+- Resolve `Responsibility → Owner → Capability Contract`; do not let an invented interface establish ownership.
 - One canonical owner per durable responsibility; keep unresolved gaps explicit until evidence supports a path.
 - Data centralization is not behavior convergence; implementation count does not define capability identity.
 - JIT detail must be explicitly routed; context optimization may not weaken semantics.

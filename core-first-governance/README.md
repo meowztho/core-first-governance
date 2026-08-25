@@ -13,6 +13,6 @@ Five Skills:
 The **primary agent remains orchestrator + Core-First participant + final integrator**. It loads detailed sibling procedures only when their compact trigger is material. Host metadata/native capabilities may satisfy discovery/execution efficiently; they do not replace portable Governance requirements.
 
 
-For material architecture work, v0.11.0 requires responsibility-first owner resolution: current carriers/implementation anchors, canonical owners, capabilities/providers, consumers, data/profile roles, migration targets, and unresolved gaps stay distinct. Data centralization does not count as behavior convergence, implementation count does not define capability identity, and symbol names do not determine roles.
+For material architecture work, v0.11.1 uses responsibility-first owner resolution: current carriers/implementation anchors, canonical owners, capabilities/providers, consumers, data/profile roles, migration targets, and unresolved gaps stay distinct. Data centralization does not count as behavior convergence, implementation/consumer count and lifecycle are evidence rather than owner-admission rules, capability contracts follow owner resolution, and symbol names do not determine roles.
 
 Existing v0.10 evidence-driven debugging/workspace reconciliation and v0.9 surface-authority behavior remain intact. No MCP server or consumer-tool bundle is added.

@@ -111,3 +111,7 @@ v0.11.0 hardens the existing architecture owner with these invariants:
 - architectural role is determined by semantics/authority/runtime flow, not symbol naming conventions.
 
 The detailed recovery examples live in the existing `EXTENSION_ARCHITECTURE_METHOD.md` reference. The five-Skill model, orchestration JIT structure, OPV, verifier, independent review, and Skills-only tooling boundary remain unchanged.
+
+## v0.11.1
+
+v0.11.1 is a bounded clarification of the v0.11 ownership-resolution method after fresh MiniMax regression tests. It distinguishes owner existence from reusable-seam proof, treats lifecycle/state proximity/consumer count/implementation count as evidence rather than mandatory owner criteria, makes `Responsibility → Owner → Capability Contract` order explicit, separates unauthorized foreign writes from true parallel-owner claims, and strengthens the gap-resolution gate before new owner creation. No new Skill, tool, MCP, authority-map format, or orchestration procedure is added.
