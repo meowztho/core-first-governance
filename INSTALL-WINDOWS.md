@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.7.0 exposes the same five Skills. The primary orchestrator adds progressive JIT Skill routing, adaptive execution/replanning, and context-rot reconciliation while preserving all v0.6.0 procedure owners and the primary agent's own Core-First duty.
+v0.9.0 exposes the same five Skills and remains Skills-only. The JIT orchestration kernel preserves the primary agent's own Core-First duty, consumes applicable user-surface/design/layout authority for material visual work, permits an optional derived Working View/Atlas only when useful, and verifies the real whole surface against the applicable project authority rather than logs or element presence alone.
 
 ## Optional Authenticode signing
 

@@ -1,17 +1,16 @@
 # Core-First Governance
 
-Provider-neutral governance skills packaged here as a Codex plugin.
+Provider-neutral governance packaged here as a Codex plugin.
 
-Included Skills:
+Five Skills:
 
-- `core-first-orchestration` — primary-agent decision procedure for progressive Skill routing, grounded source/prerequisite consumption, adaptive execution/replanning, mandatory primary-agent Core-First use when architecture is material, delegated work, verification escalation, and existing external completion authorities.
+- `core-first-orchestration` — compact primary-agent kernel for JIT Skill/procedure routing, primary Core-First duty, grounded/adaptive execution, delegation and verification/completion routing.
 - `core-first-extension-architecture` — canonical ownership/reuse/composition architecture method.
-- `observable-product-verification` — verifies real user/external runtime outcomes and keeps material raw evidence traceable through the active completion/review boundary.
+- `observable-product-verification` — verifies real user/external outcomes; user-visible claims are not proven by logs alone, and current screenshots/frames are whole-surface evidence compared to applicable project surface/design/layout authority and reused until relevant change invalidates it.
 - `core-first-verifier` — fresh read-only two-phase Core-First conformance verification.
-- `independent-review` — anti-anchored independent review for consequential or difficult-to-verify work.
+- `independent-review` — anti-anchored consequential/high-risk implementation review.
 
-The **user-facing primary agent remains the orchestrator, a Core-First participant for its own architecture-relevant work, and the final integrator**. Delegation never discharges its Core-First duty.
+The **primary agent remains orchestrator + Core-First participant + final integrator**. It loads detailed sibling procedures only when their compact trigger is material. Host metadata/native capabilities may satisfy discovery/execution efficiently; they do not replace portable Governance requirements.
 
-The orchestrator keeps a compact routing contract so it can load detailed sibling procedures only when their triggers are material. Host Skill metadata/native planning may satisfy discovery/execution efficiently, but do not replace portable Governance requirements.
 
-Portable Skill semantics do not depend on provider-specific subagent, planner/task-tracker, browser, computer-use, protocol, MCP, or external-completion-platform APIs.
+For material user-surface work, the plugin treats existing design/layout/placement references as project inputs; an optional Working View/Atlas may externalize the agent's interpretation, but remains derived cache and never project authority. v0.9.0 adds no MCP server or consumer-tool bundle.

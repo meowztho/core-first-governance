@@ -1,6 +1,6 @@
 ---
 name: observable-product-verification
-description: Verify software behavior from the real user or external-system boundary instead of inferring success from code, builds, tests, or tool actions alone. Use for interactive UI/web/desktop/game behavior, CLI/API/integration workflows, persistence, visual/runtime state, or any completion claim whose truth depends on an executable observable outcome. Do not use as an architecture owner, a full regression mandate, or a reason to expand write scope to unrelated defects.
+description: Verify real user/external outcomes instead of inferring them from code, tests, logs, telemetry, or tool success. For material user-visible claims, compare the real whole surface to applicable project surface/design/layout authority; reuse current screenshots for unchanged visible facts, refresh after relevant change, and never treat a static image as interaction proof.
 metadata:
   short-description: Verify real observable product outcomes
 ---
@@ -23,7 +23,7 @@ Tool/action success       != intended outcome
 Runtime evidence          != every broader product claim
 ```
 
-A successful click, key/input dispatch, request send, command invocation, build, process start, screenshot capture, or test harness action proves only what was actually observed from it.
+A successful click, key/input dispatch, request send, command invocation, build, process start, screenshot capture, log/telemetry entry, or test harness action proves only what was actually observed from it. **Logs/internal state are supporting evidence, not a substitute for a material user-visible outcome.** If a current trustworthy visible result contradicts an internal success log, the user-facing claim is not verified.
 
 ## Observable boundary
 
@@ -38,6 +38,12 @@ Examples of boundary classes, not mandated tools:
 - automation/batch → representative real input through the normal path to produced output/side effects.
 
 Use a narrower proxy only for a narrower claim. Do not silently substitute a weaker surface for the one the requirement actually depends on.
+
+## User-surface fidelity
+
+When the project defines a material visual/layout result, verify against the applicable **User-Surface Authority**; when implementation was grounded from one, use that same authority. Check both (a) exact constraints actually specified and (b) holistic intent/structure actually specified: style, structure, placement, hierarchy, spacing/scale, responsive/adaptive behavior, visible states, and references.
+
+Element presence or correct tokens alone do not prove the required surface. A correctly styled button in the wrong region, or correct components in a materially wrong composition, fails the affected visual claim. Respect the authority's precision: relative placement does not require invented pixel coordinates. Project authority outranks an agent-generated Working View/Atlas/mockup, which is only derived cache.
 
 ## Procedure
 
@@ -73,6 +79,7 @@ If the required surface cannot be exercised, return `INCONCLUSIVE` for that obse
 Observe enough initial state to distinguish success from a no-op, stale state, already-satisfied state, or unrelated transition.
 
 Where relevant record:
+- applicable user-surface authority/reference for visual/layout claims;
 - visible/returned value;
 - current screen/state/mode;
 - persisted value before the action;
@@ -102,16 +109,15 @@ Wait/advance only as much as needed to judge the intended outcome. Avoid arbitra
 
 ### 6. Use already-acquired evidence fully
 
-When a product surface, screenshot/image, runtime state, log/output view, or other evidence is already acquired for the target check, inspect the directly available surrounding state for **obvious material contradictions or defects** instead of tunnel-visioning on one assertion.
+Treat an acquired current screenshot/frame/rendered surface as a **whole relevant visible-state snapshot**, not as a single-element assertion. Inspect material facts already visible in that same evidence, including when applicable: layout/composition, hierarchy, placement/alignment, spacing/sizing, clipping/overlap, missing or incorrect assets, navigation/selection state, visible values/status, and contradictions with the required screen/journey or applicable User-Surface Authority.
 
-This is **ambient observation**, not a full audit.
+Logs, telemetry, debug output, DOM/state dumps, or internal counters may explain *why* something happened, but for a material user-visible claim they do not replace the visible surface. A log saying a screen loaded successfully does not make a visibly distorted screen `VERIFIED`.
 
-Examples:
-- while verifying one button, notice visibly clipped navigation or a missing required image already present in the same view;
-- while verifying jump behavior, notice the actor falls through the floor, camera breaks, or required HUD state is clearly invalid in the same run;
-- while checking a command result, notice the same output already exposes an error or contradictory state.
+Reuse a still-current visual snapshot for unchanged visible facts; do not capture a new screenshot merely to re-prove what the existing trustworthy snapshot already shows. A relevant visual/state-changing modification invalidates the affected old snapshot for those changed claims; acquire fresh visual evidence and inspect the whole relevant surface again.
 
-Do not spend materially more time searching unrelated areas merely because ambient observation is required.
+A static screenshot proves visible state only. It does **not** prove clickability, transition behavior, animation/physics over time, persistence, or hidden side effects; those still require the normal action and settled-result evidence appropriate to the claim.
+
+This is **ambient/holistic observation**, not a full unrelated audit. Do not spend materially more time searching other surfaces merely because the current one contains rich evidence.
 
 ### 7. Perform cheap bounded adjacent exploration
 
@@ -252,7 +258,14 @@ Do not:
 - infer product success from code appearance alone;
 - infer outcome success from a successful interaction/tool call;
 - stop at the first transient frame when settled behavior matters;
-- inspect only the single target pixel/element while ignoring obvious contradictions already visible in the same acquired evidence;
+- inspect only the target element while ignoring material layout/design/placement/state contradictions already visible in the same acquired screenshot/frame;
+- treat element presence or correct style/tokens as proof when applicable surface authority requires different layout, placement, hierarchy, or composition;
+- invent exact coordinates when the project authority specifies only relative spatial intent;
+- treat a generated Working View/Atlas/mockup as project authority;
+- treat logs/telemetry/internal success state as a substitute for a material user-visible result;
+- capture redundant screenshots to re-prove unchanged visible facts already established by a current trustworthy snapshot;
+- reuse a stale visual snapshot after a relevant visual/state-changing modification;
+- treat a static screenshot as proof of interaction or temporal behavior;
 - perform a full-product exploratory audit for every local change;
 - fix unrelated observations without scope/authority;
 - silently downgrade a required real-surface check to static evidence;

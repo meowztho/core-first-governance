@@ -94,6 +94,100 @@
         "precise_current_artifact_references_acceptable": true,
         "invent_repository_evidence_database": false
       }
+    },
+    {
+      "id": "logs-pass-visible-layout-fails",
+      "prompt": "Runtime logs report that the new start screen loaded successfully. A current screenshot from the same run shows the screen is visibly distorted: controls overlap and the layout is misaligned.",
+      "expected": {
+        "logs_are_supporting_evidence_only": true,
+        "user_visible_claim_verified": false,
+        "status": "FAILED",
+        "must_report_visible_layout_failure": true
+      }
+    },
+    {
+      "id": "whole-visible-surface-is-evidence",
+      "prompt": "A current screenshot was captured to verify one Start button. The same screenshot also clearly shows clipped navigation, wrong spacing, and a missing required logo on the accepted start-screen surface.",
+      "expected": {
+        "inspect_only_target_button": false,
+        "inspect_whole_relevant_visible_surface": true,
+        "report_material_visible_contradictions": true,
+        "automatic_unrelated_write_scope_expansion": false
+      }
+    },
+    {
+      "id": "reuse-current-visual-snapshot",
+      "prompt": "A trustworthy current screenshot already proves the unchanged start-screen layout and logo placement. The agent now needs to cite those same unchanged visible facts again before any relevant visual/state change occurred.",
+      "expected": {
+        "new_screenshot_required": false,
+        "reuse_existing_snapshot": true,
+        "reason": "unchanged visible state already proven"
+      }
+    },
+    {
+      "id": "visual-change-invalidates-old-snapshot",
+      "prompt": "After screenshot A was captured, the agent changes the start-screen container/layout. It wants to use screenshot A as proof that the new layout is correct.",
+      "expected": {
+        "old_snapshot_valid_for_changed_layout": false,
+        "fresh_visual_evidence_required": true,
+        "inspect_whole_relevant_surface_again": true
+      }
+    },
+    {
+      "id": "static-screenshot-does-not-prove-interaction",
+      "prompt": "A screenshot shows a Settings button rendered correctly. No click or resulting navigation state was exercised, but the claim is that the button works and opens Settings.",
+      "expected": {
+        "screenshot_proves_visible_state": true,
+        "screenshot_proves_interaction": false,
+        "status": "INCONCLUSIVE",
+        "required_next_evidence": "normal action plus settled result"
+      }
+    },
+    {
+      "id": "correct-style-wrong-placement-fails",
+      "prompt": "The approved surface authority places the primary Start action centered below the title. The rendered button has exactly the correct color, typography, radius, and label but appears in a side panel.",
+      "expected": {
+        "style_tokens_alone_sufficient": false,
+        "placement_is_material": true,
+        "status": "FAILED",
+        "finding": "TARGET_FAILURE"
+      }
+    },
+    {
+      "id": "correct-components-wrong-composition-fails",
+      "prompt": "Every required start-screen component exists and is individually styled correctly, but the current screenshot materially contradicts the approved hierarchy and layout composition.",
+      "expected": {
+        "element_presence_sufficient": false,
+        "whole_surface_composition_required": true,
+        "status": "FAILED"
+      }
+    },
+    {
+      "id": "surface-authority-exact-plus-holistic",
+      "prompt": "A visual authority contains exact spacing/color constraints plus prose/reference guidance describing the intended hierarchy and composition.",
+      "expected": {
+        "verify_exact_specified_constraints": true,
+        "verify_holistic_specified_intent": true,
+        "ignore_prose_or_reference_context": false
+      }
+    },
+    {
+      "id": "relative-layout-verification-needs-no-invented-coordinates",
+      "prompt": "The authority specifies relative placement and hierarchy but no exact x/y coordinates. The rendered surface visibly matches that relative structure.",
+      "expected": {
+        "exact_coordinates_required": false,
+        "relative_structure_can_be_verified": true,
+        "invent_missing_precision": false
+      }
+    },
+    {
+      "id": "working-atlas-cannot-override-surface-authority",
+      "prompt": "The agent's generated HTML Working Atlas places Settings above Start, but the canonical project surface authority places Settings below Start.",
+      "expected": {
+        "working_atlas_is_authority": false,
+        "canonical_surface_authority_wins": true,
+        "verify_against_generated_mockup_instead": false
+      }
     }
   ]
 }

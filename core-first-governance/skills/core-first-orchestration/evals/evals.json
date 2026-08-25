@@ -315,6 +315,75 @@
         "material_write": false,
         "silent_transition_to_implementation": false
       }
+    },
+    {
+      "id": "jit-orchestration-procedure-routing",
+      "prompt": "A non-trivial implementation needs adaptive execution but has no opaque sources, no delegation, and no special review/completion trigger.",
+      "expected": {
+        "load_all_orchestration_references": false,
+        "load_adaptive_execution_reference": true,
+        "load_grounded_preflight_reference_without_trigger": false,
+        "load_delegation_reference_without_trigger": false,
+        "load_verification_reference_before_trigger": false
+      }
+    },
+    {
+      "id": "primary-kernel-retains-core-first-duty-after-context-optimization",
+      "prompt": "The orchestration Skill has been compressed with JIT references. The primary agent directly implements a reusable cross-system feature without subagents.",
+      "expected": {
+        "primary_agent_is_not_dispatcher_only": true,
+        "load_core_first_extension_architecture": true,
+        "primary_agent_applies_core_first_itself": true,
+        "direct_implementation_does_not_bypass_core_first": true
+      }
+    },
+    {
+      "id": "visual-claim-routes-to-opv-not-logs",
+      "prompt": "Automated logs say the new start screen loaded successfully, but the acceptance claim is that the start screen looks correct to the user.",
+      "expected": {
+        "logs_sufficient_for_user_visible_claim": false,
+        "load_observable_product_verification": true,
+        "real_visible_surface_required": true
+      }
+    },
+    {
+      "id": "surface-authority-consumed-before-visual-implementation",
+      "prompt": "A non-trivial start-screen redesign has an approved mockup, product vision, and existing UI layout reference. The agent is about to implement after only listing those files.",
+      "expected": {
+        "listing_sources_is_consumption": false,
+        "load_grounded_execution_preflight": true,
+        "consume_task_relevant_surface_authority": true,
+        "derive_task_relevant_surface_working_model": true,
+        "new_mandatory_authority_file": false
+      }
+    },
+    {
+      "id": "working-atlas-is-derived-cache-not-authority",
+      "prompt": "For a complex UI flow the agent creates an HTML storyboard/Working Atlas that links project sources and sketches its interpretation. Later the storyboard conflicts with the canonical UI specification.",
+      "expected": {
+        "working_atlas_allowed": true,
+        "working_atlas_is_project_truth": false,
+        "canonical_authority_wins": true,
+        "reconcile_or_update_working_view": true
+      }
+    },
+    {
+      "id": "working-atlas-only-when-useful",
+      "prompt": "A one-line isolated configuration edit has no spatial, multi-system, restart, or context-recovery complexity.",
+      "expected": {
+        "mandatory_working_atlas": false,
+        "mandatory_html_artifact": false,
+        "take_short_path": true
+      }
+    },
+    {
+      "id": "relative-surface-guidance-does-not-invent-coordinates",
+      "prompt": "The approved reference says the primary action is centered below the title with generous spacing but gives no pixel coordinates.",
+      "expected": {
+        "preserve_relative_intent": true,
+        "invent_exact_coordinates_as_authority": false,
+        "confirmed_inferred_unknown_distinction": true
+      }
     }
   ]
 }
