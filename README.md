@@ -1,10 +1,42 @@
-# Core-First Governance v0.11.1
+# Core-First Governance v0.11.3
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
 
-## What v0.11.1 changes
+## What v0.11.3 changes
 
-v0.11.1 is a bounded clarification of the v0.11 ownership-resolution model after the same MiniMax regression scenarios exposed one remaining ambiguity: the model could treat good **reuse evidence** (second consumer, distinct lifecycle, interface) as mandatory **owner-admission criteria**. No new Skill, tool, owner type, or architecture artifact is added.
+v0.11.3 is a bounded Core-First architecture refinement from real project/compiler work: broad product or subsystem requests can be locally well-designed yet still omit an ordinary, material responsibility that a competent domain expert would immediately expect. The fix stays inside the existing `core-first-extension-architecture` owner.
+
+### Responsibility coverage challenge
+
+For Greenfield, broad product/subsystem work, or unclear architecture, Core-First now asks before accepting the responsibility set:
+
+> Could a competent domain expert immediately identify an important ordinary responsibility implied by the requested product that was never considered?
+
+If yes, surface the gap before owner resolution and determine whether an existing owner already covers it, it is explicitly excluded/deferred, or it remains unresolved.
+
+This is deliberately **not** a product-archetype compiler inside the plugin:
+
+- domain/product expectations are discovery hypotheses, not project authority;
+- explicit user/project decisions, exclusions, and deferrals win;
+- the challenge does not authorize a new owner or capability;
+- narrow local tasks do not trigger whole-product reconstruction;
+- normal Core-First still proceeds `Requirement → Responsibility → Owner → Capability → Module/Provider → Consumer → Data/Modifier`.
+
+### Context cleanup without semantic loss
+
+The main Core-First Skill was close to its context ceiling. v0.11.3 moves duplicated detail to the existing JIT references instead of adding another procedure:
+
+- detailed conditional-profile rules remain in `references/CONDITIONAL_PROFILES.md`;
+- the full public extension-point contract and high-risk checklists now live in `references/EXTENSION_ARCHITECTURE_METHOD.md`;
+- the main Skill keeps the triggers and non-negotiable invariants.
+
+Result: the main Core-First Skill drops from **14,950 to 14,379 bytes (-571 bytes)** while adding the coverage challenge. No existing Skill family is removed or merged.
+
+## v0.11.2 outcome/debugging baseline remains intact
+
+Outcome-coverage reconciliation, exact symptom identity, evidence-driven debugging, workspace reconciliation, and the complete v0.11.1 ownership semantics are preserved unchanged.
+
+## v0.11.1 ownership baseline remains intact
 
 ### Owner existence != reusable-seam proof
 
@@ -76,13 +108,9 @@ The agent distinguishes `CONFIRMED | INFERRED | UNKNOWN`; relative guidance stay
 
 ## Context budget
 
-Orchestration is byte-identical to v0.10.0/v0.11.0, so its permanent/JIT cost does not increase in v0.11.1:
+The always-loaded orchestration kernel remains **10,594 bytes**, byte-identical to v0.11.1. The complete owner-local orchestration corpus is **26,042 bytes** (v0.11.1: 25,997; delta **+45 bytes**) under unchanged ceilings of **11,000-byte kernel**, **4,000 bytes per JIT reference**, and **26,500-byte total**.
 
-- always-loaded orchestration kernel: **10,594 bytes**
-- kernel + five owner-local JIT references: **25,997 bytes**
-- orchestration ceilings: **11,000-byte kernel**, **4,000 bytes per JIT reference**, **26,500-byte total owner corpus**
-
-The canonical Core-First Skill is loaded only when architecture/ownership/reuse is material. Its main body is **14,950 bytes** in v0.11.1 versus **14,585 bytes** in v0.11.0 (**+365 bytes, ~2.5%**) and **13,034 bytes** in v0.10.0. The hard **15,000-byte Core-First main-Skill ceiling** remains unchanged. Detailed examples stay in the existing JIT method reference.
+The canonical Core-First Skill is now **14,379 bytes** (v0.11.2: 14,950; **-571 bytes**) under the unchanged **15,000-byte** ceiling. Detailed conditional/extension-point material moved to existing JIT references rather than being deleted.
 
 ## Consumer-tool decision
 
@@ -114,8 +142,8 @@ No bundled:
 
 | Skill | Canonical responsibility |
 | --- | --- |
-| `core-first-orchestration` | minimal-context routing, grounded/adaptive execution, workspace reconciliation, evidence-driven debugging, delegation/completion routing |
-| `core-first-extension-architecture` | responsibility decomposition, owner/role resolution, reuse, composition, capabilities/providers/extensions, reverse-debug architecture path |
+| `core-first-orchestration` | minimal-context routing, grounded/adaptive execution, outcome-coverage reconciliation, evidence-driven debugging, delegation/completion routing |
+| `core-first-extension-architecture` | responsibility discovery/coverage challenge, owner/role resolution, reuse, composition, capabilities/providers/extensions, reverse-debug architecture path |
 | `observable-product-verification` | real user/external outcomes, whole-surface fidelity, evidence reuse/traceability |
 | `core-first-verifier` | fresh read-only two-phase Core-First conformance |
 | `independent-review` | anti-anchored consequential/high-risk review |
@@ -136,8 +164,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-08-25_v0.11.1.md
-├── RELEASE_AUDIT_v0.11.1.md
+├── CONTEXT_HANDOFF_2026-09-01_v0.11.3.md
+├── RELEASE_AUDIT_v0.11.3.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
@@ -164,6 +192,7 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ## Development rules
 
 - Name the responsibility before declaring its owner; current carrier/name/size does not prove canonical ownership.
+- For broad product/subsystem work, challenge whether an important ordinary responsibility was never considered; domain expectations are hypotheses, not authority.
 - Owner existence is separate from reuse proof; second consumers, lifecycle, implementation count, or interfaces are evidence rather than mandatory owner criteria.
 - Resolve `Responsibility → Owner → Capability Contract`; do not let an invented interface establish ownership.
 - One canonical owner per durable responsibility; keep unresolved gaps explicit until evidence supports a path.
@@ -173,6 +202,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 - Do not identify visual/runtime sources from resemblance or matching visible size alone.
 - After context loss, discover current workspace state cheaply before JIT loading; never hydrate everything by default.
 - Working aids remain cache and reuse existing discoverability/routing mechanisms.
+- A local fix never replaces the original requested outcome boundary; completion is based on outcome coverage, not passing-evidence count.
+- Preserve reported observable identity; nearby defects remain separate until causal identity is established.
 - Do not add consumer tools merely because the host/plugin format supports them.
 - Re-run release + host validation after Skill/manifest changes.
 

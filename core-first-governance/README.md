@@ -5,7 +5,7 @@ Provider-neutral governance packaged here as a Codex plugin.
 Five Skills:
 
 - `core-first-orchestration` — compact primary-agent kernel for JIT Skill/procedure routing, primary Core-First duty, grounded/adaptive execution, evidence-driven debugging, workspace reconciliation, delegation and verification/completion routing.
-- `core-first-extension-architecture` — canonical responsibility/ownership/reuse/composition method, including responsibility-relative owner/role resolution.
+- `core-first-extension-architecture` — canonical responsibility/ownership/reuse/composition method, including broad responsibility-coverage challenge and responsibility-relative owner/role resolution.
 - `observable-product-verification` — verifies real user/external outcomes; user-visible claims are not proven by logs alone, and current screenshots/frames are whole-surface evidence compared to applicable project surface/design/layout authority and reused until relevant change invalidates it.
 - `core-first-verifier` — fresh read-only two-phase Core-First conformance verification.
 - `independent-review` — anti-anchored consequential/high-risk implementation review.
@@ -13,6 +13,6 @@ Five Skills:
 The **primary agent remains orchestrator + Core-First participant + final integrator**. It loads detailed sibling procedures only when their compact trigger is material. Host metadata/native capabilities may satisfy discovery/execution efficiently; they do not replace portable Governance requirements.
 
 
-For material architecture work, v0.11.1 uses responsibility-first owner resolution: current carriers/implementation anchors, canonical owners, capabilities/providers, consumers, data/profile roles, migration targets, and unresolved gaps stay distinct. Data centralization does not count as behavior convergence, implementation/consumer count and lifecycle are evidence rather than owner-admission rules, capability contracts follow owner resolution, and symbol names do not determine roles.
+v0.11.3 preserves the complete v0.11.2 baseline and adds one bounded Core-First refinement: for broad/Greenfield responsibility discovery, challenge whether an important ordinary responsibility implied by the requested product was never considered. Domain expectations are discovery hypotheses, not project authority; explicit exclusions/deferrals remain controlling, and narrow local tasks do not trigger whole-product reconstruction.
 
-Existing v0.10 evidence-driven debugging/workspace reconciliation and v0.9 surface-authority behavior remain intact. No MCP server or consumer-tool bundle is added.
+The main Core-First Skill is also context-trimmed by moving detailed conditional-profile and public-extension-point material to the existing JIT references. No Skill, MCP server, consumer-tool bundle, tracker, or new authority artifact is added.

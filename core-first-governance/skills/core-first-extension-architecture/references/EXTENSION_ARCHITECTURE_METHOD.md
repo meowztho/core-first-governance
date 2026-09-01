@@ -40,17 +40,25 @@ Definition / Profile
 
 ## 3. Phase 0 — discover responsibilities
 
-For Greenfield work, architecture recovery, or unclear ownership:
+For Greenfield work, broad product/subsystem work, architecture recovery, or unclear ownership:
 
 1. List primary user/business outcomes.
 2. Identify decisions and state that must be authoritative.
-3. Trace important inputs, outputs, external systems, and persistence boundaries.
+3. Trace important inputs, outputs, external systems, persistence, and lifecycle boundaries.
 4. Identify policies/invariants that must remain consistent.
 5. Group only responsibilities that genuinely belong together.
 6. Record exclusions: what each owner explicitly does not own.
 7. Identify the first reusable capabilities under each owner.
 
-Useful techniques are optional: use-case analysis, event storming, domain events, user journeys, data-flow analysis, API inspection, call-graph inspection, test/fixture analysis, or bounded-context discovery.
+### Responsibility coverage challenge
+
+Before treating a **broad** responsibility set as sufficient, ask:
+
+> Could a competent domain expert immediately identify an important ordinary responsibility implied by the requested product that was never considered?
+
+If yes, surface it before owner resolution and determine whether an existing owner already covers it, it is explicitly excluded/deferred, or it remains unresolved. Domain/product knowledge is a discovery hypothesis, not project authority: it must not invent optional features or override explicit user/project decisions. This challenge is materiality-gated; a narrow local edit does not trigger whole-product reconstruction.
+
+Useful techniques are optional: use-case analysis, domain events, user journeys, data-flow analysis, API/call-graph inspection, test/fixture analysis, or bounded-context discovery.
 
 The output is not a fixed number of systems. A small tool may need only a few durable responsibilities.
 
@@ -174,6 +182,23 @@ Prefer the earliest sufficient answer.
 
 External origin grants no extra authority. Third-party content/code must use the same responsibility-owner contracts and validation boundaries as first-party producers; it does not gain permission to mutate foreign authoritative state or create a parallel owner.
 
+### Public extension-point contract
+
+When a declared extension seam is material, record at least:
+- stable ID/name;
+- owner system and capability path;
+- accepted definitions/interfaces/providers;
+- discovery/registration/lookup;
+- validation and required/optional dependencies;
+- allowed variation/substitution semantics;
+- forbidden foreign writes/bypasses;
+- runtime/data trace;
+- version/compatibility/migration needs where relevant;
+- representative consumers/providers or equivalent reuse proof;
+- acceptance evidence.
+
+The extension point owns the seam, not all behavior behind it.
+
 ## 8. Capability granularity test
 
 Create a capability when there is a coherent reusable semantic contract.
@@ -251,10 +276,27 @@ When multiple modifiers can combine, the project must define deterministic seman
 ## 12. High-risk governance
 
 ### Core rule changes
-A core rule change must update the canonical owner, assess affected contracts/consumers, assess compatibility/migration impact, update relevant authority artifacts, and produce focused acceptance evidence. Local patches are a failure mode.
+
+Require:
+- canonical owner identified;
+- affected contracts/consumers identified;
+- compatibility/migration impact assessed;
+- acceptance behavior updated;
+- canonical authority artifact updated where applicable;
+- focused evidence/tests.
+
+Local patches around the canonical owner are a failure mode.
 
 ### One-off exceptions
-A one-off exception must be justified, scoped, and prevented from becoming an undocumented second architecture. If a second meaningful consumer appears, revisit the classification.
+
+Require:
+- explicit reason existing data/configuration/composition cannot express the need;
+- exact owner and scope;
+- reason it should remain isolated;
+- regression evidence preventing accidental spread;
+- revisit condition: if a second meaningful consumer needs similar behavior, reclassify it as a reusable capability/module candidate.
+
+A one-off exception must not become an undocumented second architecture.
 
 ## 13. Reverse debugging
 

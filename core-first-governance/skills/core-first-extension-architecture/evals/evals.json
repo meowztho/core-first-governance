@@ -864,6 +864,106 @@
           "existing project authority updated"
         ]
       }
+    },
+    {
+      "id": "broad-product-responsibility-coverage-challenge",
+      "prompt": "A team asks for the architecture of a small multi-user chat product. The draft system map covers Identity, Workspaces, Channels, Message History, and Notifications, but never considers who may join a workspace or access a channel. Apply Core-First before accepting the map.",
+      "expected_output": "Challenge the broad responsibility coverage. A competent domain expert would flag membership/access responsibility as an ordinary material gap. Surface that responsibility and then determine whether an existing owner covers it or whether ownership remains unresolved; do not jump straight to a new service or interface.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "responsibility discovery before owner resolution",
+          "existing owner/capability search"
+        ],
+        "must_not_create": [
+          "new MembershipService solely because a gap was noticed",
+          "interface used to manufacture an owner"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "important ordinary responsibility surfaced before finalizing the responsibility model"
+        ]
+      }
+    },
+    {
+      "id": "domain-expectation-is-hypothesis-not-project-authority",
+      "prompt": "Design a simple appointment-booking product. Industry products often take payments, but the user explicitly states that all appointments are free and payment handling is out of scope. Should Core-First add a Payments responsibility because a domain expert might expect one?",
+      "expected_output": "No. Domain expectations are discovery hypotheses, not project authority. Respect the explicit product decision and do not add Payments. Continue coverage reasoning only for material responsibilities not contradicted or excluded by project authority.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "explicit user/project decision"
+        ],
+        "must_not_create": [
+          "Payments responsibility",
+          "payment capability from industry convention alone"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "explicit exclusion outranks domain expectation"
+        ]
+      }
+    },
+    {
+      "id": "explicitly-deferred-responsibility-is-not-reintroduced",
+      "prompt": "A peer-to-peer marketplace project explicitly defers checkout and payment until a later release; the current scope is listings plus buyer-seller contact. During a responsibility coverage check, should the agent reintroduce Payment/Checkout as current work because marketplaces commonly have it?",
+      "expected_output": "No. Recognize the responsibility as already considered and explicitly deferred. Do not reopen or implement it unless scope/authority changes. The coverage challenge prevents silent omission; it does not erase explicit deferrals.",
+      "assertions": {
+        "task_type": "RESPONSIBILITY_DISCOVERY",
+        "expected_classification": null,
+        "allowed_classifications": [],
+        "forbidden_classifications": [],
+        "expected_owner": null,
+        "must_reuse": [
+          "existing deferral/current scope authority"
+        ],
+        "must_not_create": [
+          "current Payment/Checkout workstream",
+          "new owner for a deferred responsibility"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "deferred responsibility remains explicit rather than treated as missing"
+        ]
+      }
+    },
+    {
+      "id": "narrow-local-task-does-not-trigger-whole-product-sweep",
+      "prompt": "In an established reporting application, fix a CSV exporter bug where semicolon-delimited output is incorrectly emitted with commas. Ownership of export formatting is already clear. Apply Core-First.",
+      "expected_output": "Treat this as a narrow local change under the existing export owner/capability. Do not perform a whole-product responsibility inventory merely because the responsibility coverage challenge exists; inspect only the material local owner/path and verify the delimiter behavior.",
+      "assertions": {
+        "task_type": "CHANGE",
+        "expected_classification": null,
+        "allowed_classifications": [
+          "DATA_OR_ASSET",
+          "CONFIG_OVERRIDE",
+          "EXTEND_EXISTING_CAPABILITY"
+        ],
+        "forbidden_classifications": [
+          "NEW_REUSABLE_CAPABILITY",
+          "NEW_EXTENSION_POINT"
+        ],
+        "expected_owner": "existing export/output formatting owner",
+        "must_reuse": [
+          "existing exporter/formatting capability"
+        ],
+        "must_not_create": [
+          "whole-product responsibility reconstruction",
+          "new system for delimiter behavior"
+        ],
+        "conditional_profiles": [],
+        "required_evidence": [
+          "focused delimiter behavior verification"
+        ]
+      }
     }
   ]
 }

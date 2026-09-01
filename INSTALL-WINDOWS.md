@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.11.1 exposes the same five Skills and remains Skills-only. The canonical Core-First architecture Skill resolves ownership responsibility-first and now clarifies that owner existence is separate from reusable-seam proof: lifecycle, state proximity, consumer/implementation count, or a language-level interface are evidence, not mandatory owner criteria. Existing v0.10 debugging/workspace and v0.9 User-Surface/OPV behavior are preserved.
+v0.11.3 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.2 orchestration/debugging/verification baseline and adds a bounded Core-First responsibility-coverage challenge for broad product/subsystem work. Domain expectations remain discovery hypotheses rather than project authority, explicit exclusions/deferrals remain controlling, and narrow local tasks do not trigger whole-product reconstruction. Detailed conditional/extension-point rules are JIT-routed to existing references to reduce main-Skill context.
 
 ## Optional Authenticode signing
 

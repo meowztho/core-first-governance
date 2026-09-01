@@ -1,6 +1,6 @@
 ---
 name: core-first-extension-architecture
-description: Design, extend, review, refactor, or debug modular software by decomposing responsibilities before resolving canonical owners, distinguishing owners from implementation roles, classifying the smallest semantic change, reusing before extending, composing consumers instead of duplicating core behavior, and converging multiple producers onto one canonical owner path. Use for reusable features, ownership ambiguity/conflicts/gaps, provider/adapter additions, import/build paths, configurable variants, repeated local implementations, extension points, plugin/mod systems, architecture repair, or Greenfield system decomposition. Do not use for trivial isolated edits where reuse, ownership, or system boundaries are not material.
+description: Design, extend, review, refactor, or debug modular software by discovering durable responsibilities, challenging broad responsibility coverage, resolving canonical owners, distinguishing owners from implementation roles, classifying the smallest semantic change, reusing before extending, composing consumers instead of duplicating core behavior, and converging producers onto one canonical owner path. Use for reusable features, ownership ambiguity/conflicts/gaps, provider/adapter additions, import/build paths, configurable variants, repeated local implementations, extension points, plugin/mod systems, architecture repair, or Greenfield system decomposition. Do not use for trivial isolated edits where reuse, ownership, or system boundaries are not material.
 ---
 
 # Core-First Extension Architecture
@@ -29,17 +29,13 @@ A universal rule or authoritative state transition has one canonical owner. Exte
 
 ## Phase 0 — Responsibility discovery
 
-For Greenfield work or unclear architecture, first discover durable responsibility boundaries.
+For Greenfield, broad product/subsystem work, or unclear architecture, first discover durable responsibility boundaries.
 
-Inspect only what is needed, using suitable evidence such as:
-- primary user/business use cases;
-- authoritative state and decisions;
-- domain events and workflows;
-- external systems and I/O boundaries;
-- data flows and lifecycle boundaries;
-- existing APIs, call graphs, persistence boundaries, and tests.
+Inspect only what is needed: user/business outcomes, authoritative state/decisions, workflows/events, external/I/O and persistence boundaries, data/lifecycle flows, and relevant APIs/tests.
 
-Group responsibilities only where they genuinely belong to one durable owner. Do not manufacture subsystems merely to fit this method.
+**Responsibility coverage challenge:** before accepting a broad responsibility set, ask whether a competent domain expert could immediately identify an important ordinary responsibility implied by the requested product that is neither modeled/covered by an existing owner nor explicitly excluded, deferred, or left unresolved. Surface such a gap before owner resolution. Domain expectations are discovery hypotheses, not project authority: do not invent optional features or override explicit user/project decisions.
+
+Group responsibilities only where they genuinely belong to one durable owner. Do not manufacture subsystems merely to fit this method. Do not run a whole-product sweep for a narrow local task.
 
 ## Structural roles
 
@@ -186,73 +182,23 @@ If multiple modifiers can compose, define deterministic operation semantics, ord
 
 ## Governance for high-risk classes
 
-### CORE_RULE_CHANGE
+`CORE_RULE_CHANGE` requires the canonical owner, affected contracts/consumers, compatibility/migration impact, acceptance updates, relevant authority updates, and focused evidence.
 
-Require:
-- canonical owner identified;
-- affected contracts/consumers identified;
-- compatibility/migration impact assessed;
-- acceptance behavior updated;
-- canonical authority artifact updated where applicable;
-- focused evidence/tests.
+`EXPLICIT_ONE_OFF_EXCEPTION` requires proof that normal data/configuration/composition cannot express the need, exact owner/scope and isolation reason, regression evidence, and a revisit if a second meaningful consumer appears.
 
-### EXPLICIT_ONE_OFF_EXCEPTION
-
-Require:
-- explicit reason existing data/configuration/composition cannot express the need;
-- exact owner and scope;
-- reason it should remain isolated;
-- regression evidence preventing accidental spread;
-- revisit condition: if a second meaningful consumer needs similar behavior, reclassify it as a reusable capability/module candidate.
+Use `references/EXTENSION_ARCHITECTURE_METHOD.md` for the full high-risk checklist.
 
 ## Public extension-point contract
 
-When a declared extension seam is material, record at least:
+When a declared extension seam is material, define its owner/capability path, accepted extension forms, discovery/registration, validation/dependencies, allowed variation, forbidden bypasses, runtime trace, compatibility needs, representative proof, and acceptance evidence. The extension point owns the seam, not all behavior behind it.
 
-- stable ID/name;
-- owner system and capability path;
-- accepted definitions/interfaces/providers;
-- registration/lookup mechanism;
-- validation rules;
-- required/optional dependencies;
-- allowed variation/substitution semantics;
-- forbidden foreign writes/bypasses;
-- runtime/data trace;
-- version/compatibility/migration needs where relevant;
-- representative consumers/providers;
-- acceptance evidence.
-
-The extension point owns the seam, not all behavior behind it.
+Use `references/EXTENSION_ARCHITECTURE_METHOD.md` for the full contract fields.
 
 ## Conditional architecture profiles
 
-Do not force advanced machinery into every project. Activate only when the requirement makes it material.
+Do not force advanced machinery into every project. Activate only when material: persistent/versioned definitions; distributed/asynchronous boundaries; external/dynamic plugins; untrusted executable extensions; deterministic/reproducible execution; performance-sensitive runtime; multi-tenant/contextual configuration; or polyglot/cross-runtime contracts.
 
-### Persistent/versioned definitions
-Define schema/contract evolution, migration, compatibility, missing-reference behavior, and rollback/recovery where material.
-
-### Distributed/asynchronous boundaries
-Define message/contract semantics, timeout/retry behavior, idempotency, delivery guarantees where material, failure propagation, and correlation/trace identity.
-
-### External/dynamic plugin ecosystems
-Define discovery, version constraints, dependency/conflict resolution, activation/deactivation, update/uninstall semantics, and failure isolation.
-
-### Untrusted executable extensions
-Define trust class, permissions, filesystem/network authority, sandbox/process isolation where appropriate, and failure containment.
-
-### Deterministic/reproducible systems
-Define deterministic ordering, authoritative state boundary, time/random sources, and side-effect handling.
-
-### Performance-sensitive systems
-Define relevant latency/frame/resource budgets, scheduling constraints where material, and profiling evidence.
-
-### Multi-tenant/contextual configuration
-Define scoped configuration, precedence, secrets, feature availability, and tenant isolation where material.
-
-### Polyglot/cross-runtime contracts
-Define a language-neutral contract/IDL only when multiple languages/processes/runtimes genuinely share a durable capability boundary.
-
-Use `references/CONDITIONAL_PROFILES.md` whenever any conditional profile is materially present.
+Use `references/CONDITIONAL_PROFILES.md` whenever any profile is triggered; it owns the detailed migration, delivery, trust, determinism, performance, scoping, and cross-runtime checks.
 
 ## Producer convergence
 
@@ -269,6 +215,7 @@ Warning signs:
 
 Use the smallest relevant proof set:
 
+- broad responsibility coverage challenged when material;
 - second-consumer/provider reuse when semantic reusability of a seam/capability is material;
 - producer convergence;
 - no parallel state/decision owner;
@@ -312,5 +259,5 @@ Do not duplicate exact project truth inside this Skill.
 ## Read references JIT
 
 Use:
-- `references/EXTENSION_ARCHITECTURE_METHOD.md` for the full decision method and domain-neutral examples.
-- `references/CONDITIONAL_PROFILES.md` whenever any conditional architecture profile is materially present.
+- `references/EXTENSION_ARCHITECTURE_METHOD.md` when broad/Greenfield responsibility coverage, ownership recovery, a declared extension seam, high-risk architecture, or detailed acceptance reasoning is material.
+- `references/CONDITIONAL_PROFILES.md` whenever a conditional architecture profile is materially present.

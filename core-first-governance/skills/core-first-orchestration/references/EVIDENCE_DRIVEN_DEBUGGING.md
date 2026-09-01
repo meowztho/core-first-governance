@@ -4,7 +4,7 @@ Read this procedure for an active runtime/product defect investigation when obse
 
 ## Route from the real surface, not resemblance
 
-Visual/runtime resemblance is a clue, not source identity. Start from the observable surface and runtime/ownership route. Preserve symptom facts; source bounds need not match the visible artifact.
+Visual/runtime resemblance is a clue, not source identity. Start from the observable surface and runtime/ownership route. Preserve symptom facts and **observable identity**; a nearby/easier defect does not replace the reported symptom merely because it shares a subsystem, resemblance, or evidence surface. Treat it separately until evidence establishes the same causal problem. Source bounds need not match the visible artifact.
 
 ```text
 observable symptom

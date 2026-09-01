@@ -115,3 +115,21 @@ The detailed recovery examples live in the existing `EXTENSION_ARCHITECTURE_METH
 ## v0.11.1
 
 v0.11.1 is a bounded clarification of the v0.11 ownership-resolution method after fresh MiniMax regression tests. It distinguishes owner existence from reusable-seam proof, treats lifecycle/state proximity/consumer count/implementation count as evidence rather than mandatory owner criteria, makes `Responsibility → Owner → Capability Contract` order explicit, separates unauthorized foreign writes from true parallel-owner claims, and strengthens the gap-resolution gate before new owner creation. No new Skill, tool, MCP, authority-map format, or orchestration procedure is added.
+
+## v0.11.2
+
+v0.11.2 is a bounded `core-first-orchestration` correction from real MiniMax continuation/debugging runs. A small, easy-to-measure incidental defect plus many passing tests could displace a broader user request and inflate the completion claim even though several original outcomes remained unaddressed.
+
+The existing orchestration owner now performs lightweight **outcome-coverage reconciliation** after material local fixes and before completion: original requested outcome → matching evidence → remaining gap / next priority. Evidence volume does not define completion, and an incidental defect cannot silently replace the broader outcome.
+
+`EVIDENCE_DRIVEN_DEBUGGING.md` additionally preserves **observable identity**: a nearby/easier defect stays separate from the reported symptom until evidence establishes the same causal problem.
+
+No new Skill, tracker, acceptance engine, MCP, tool bundle, or architecture owner is introduced. The always-loaded orchestration kernel, the complete `core-first-extension-architecture` family, `observable-product-verification`, `core-first-verifier`, and `independent-review` remain unchanged. Three existing orchestration JIT references and orchestration evals are intentionally versioned; the total orchestration corpus changes by only +45 bytes after compression.
+
+## v0.11.3
+
+v0.11.3 is a bounded refinement of the existing `core-first-extension-architecture` responsibility-discovery method after compiler/project tests showed a related omission risk: a broad product can have locally valid owners/capabilities yet still never consider an ordinary material responsibility implied by the requested product.
+
+The existing Core-First owner now adds a **Responsibility Coverage Challenge** for Greenfield/broad product or subsystem work. Before accepting the responsibility set, ask whether a competent domain expert could immediately identify an important ordinary responsibility that was never considered. Domain/product expectations are discovery hypotheses, not project authority; explicit exclusions/deferrals remain controlling, the challenge does not authorize a new owner, and narrow local tasks do not trigger whole-product reconstruction.
+
+The main Core-First Skill is also context-trimmed by moving detailed conditional-profile rules to the existing `CONDITIONAL_PROFILES.md` JIT reference and the full public extension-point contract to `EXTENSION_ARCHITECTURE_METHOD.md`. No semantics are removed, and no Skill, tracker, compiler pipeline, MCP, tool bundle, or new project authority format is introduced.
