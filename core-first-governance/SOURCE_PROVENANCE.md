@@ -133,3 +133,14 @@ v0.11.3 is a bounded refinement of the existing `core-first-extension-architectu
 The existing Core-First owner now adds a **Responsibility Coverage Challenge** for Greenfield/broad product or subsystem work. Before accepting the responsibility set, ask whether a competent domain expert could immediately identify an important ordinary responsibility that was never considered. Domain/product expectations are discovery hypotheses, not project authority; explicit exclusions/deferrals remain controlling, the challenge does not authorize a new owner, and narrow local tasks do not trigger whole-product reconstruction.
 
 The main Core-First Skill is also context-trimmed by moving detailed conditional-profile rules to the existing `CONDITIONAL_PROFILES.md` JIT reference and the full public extension-point contract to `EXTENSION_ARCHITECTURE_METHOD.md`. No semantics are removed, and no Skill, tracker, compiler pipeline, MCP, tool bundle, or new project authority format is introduced.
+
+## v0.11.4
+
+v0.11.4 is a bounded `core-first-orchestration` hardening derived from repeated real-agent tests of project-defined approval/admission workflows. Independent runs exposed both false-positive gate crossing (broad implementation intent treated as implicit approval) and false-negative blocking (the existence of a later approval gate used to refuse authorized reversible preparation before it).
+
+The orchestration kernel therefore preserves the gate at the **exact state transition**: an approval/admission gate blocks that transition, not authorized reversible preparation before it, and broad implementation intent does not implicitly authorize crossing the gate. Three domain-neutral regression evals cover preparation-before-gate, broad-request non-authorization, and exact transition scope.
+
+A separate experiment attempted to harden producer/authoring-boundary reuse against direct use of underlying stores/repositories. The stronger wording did not reliably change agent behavior across the tested runs, so it is intentionally **not** added as permanent runtime Skill text in this release. This avoids accumulating model-specific or ineffective prompt weight.
+
+No new Skill, approval engine, tracker, provider binding, MCP/tool bundle, or authority artifact is introduced. The v0.11.3 Core-First architecture family and all other Skill families remain byte-identical.
+

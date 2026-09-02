@@ -20,6 +20,7 @@ Always preserve these invariants:
 5. **Adaptive execution.** Non-trivial authorized implementation uses lightweight execution state/checkpoints and replans when evidence changes the correct path. Trivial work gets no ceremony.
 6. **Evidence matches the claim.** Static/log/tool evidence does not substitute for a material real user/external outcome. Route such claims to `observable-product-verification`.
 7. **No parallel owners.** Plans, routing metadata, reviewers, verifiers, generated views, and host capabilities do not become project truth, architecture owners, or completion authorities.
+8. **Exact gate boundary.** An approval/admission gate blocks the gated state transition, not authorized reversible preparation before it. A broader implementation request does not implicitly authorize crossing that transition.
 
 ## Skill routing capsule
 

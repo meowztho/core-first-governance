@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.11.3 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.2 orchestration/debugging/verification baseline and adds a bounded Core-First responsibility-coverage challenge for broad product/subsystem work. Domain expectations remain discovery hypotheses rather than project authority, explicit exclusions/deferrals remain controlling, and narrow local tasks do not trigger whole-product reconstruction. Detailed conditional/extension-point rules are JIT-routed to existing references to reduce main-Skill context.
+v0.11.4 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.3 responsibility/ownership/outcome/debugging/verification baseline and adds one bounded orchestration invariant: an approval/admission gate blocks the gated state transition itself, not authorized reversible preparation before it, and a broad implementation request does not implicitly authorize crossing that gate. No model-specific rule, approval framework, tracker, MCP server, or new Skill is added.
 
 ## Optional Authenticode signing
 
