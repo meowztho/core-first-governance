@@ -144,3 +144,6 @@ A separate experiment attempted to harden producer/authoring-boundary reuse agai
 
 No new Skill, approval engine, tracker, provider binding, MCP/tool bundle, or authority artifact is introduced. The v0.11.3 Core-First architecture family and all other Skill families remain byte-identical.
 
+## v0.11.5
+
+v0.11.5 clarifies existing orchestration/Core-First routing language after the term `non-trivial` proved too subjective to be a reliable agent trigger. Runtime decisions now use explicit material properties and a positively defined local short path. Small-looking changes can still be material when they cross ownership, contract, producer/persistence, gate, authority, dependency, shared-behavior, or authoritative-state boundaries; large mechanical edits can remain on the short path when those semantics are already settled and direct bounded verification is sufficient. File count and apparent difficulty are evidence, not policy triggers. No new owner, Skill, planner, tracker, or tool is introduced.

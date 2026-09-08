@@ -1,6 +1,6 @@
 ---
 name: core-first-orchestration
-description: Route non-trivial software work with minimal context. The primary agent MUST load and apply Core-First itself whenever architecture/ownership/reuse is material. Load sibling Skills and detailed orchestration procedures only when their triggers are material; ground prerequisites before expensive execution, keep execution state adaptive, and route real-surface verification/review/completion without replacing their canonical owners.
+description: Route software work with minimal context using explicit material triggers and a defined local short path. The primary agent MUST apply Core-First itself when architecture/ownership/reuse is material. Load sibling Skills/procedures JIT only on material triggers; ground prerequisites, adapt execution, and route verification/review/completion without replacing canonical owners.
 metadata:
   short-description: Minimal-context Core-First routing and execution
 ---
@@ -17,7 +17,7 @@ Always preserve these invariants:
 2. **Current truth beats cache.** Repository/project authorities and current external/runtime state outrank remembered chat, Skill memory, old plans, summaries, and stale evidence.
 3. **Progressive disclosure.** Route from compact trigger knowledge; do not preload every sibling Skill or detailed orchestration procedure. Load the canonical owner JIT when its trigger becomes material.
 4. **Ground before expensive action.** Material source/tool/prerequisite facts that can change the approach must be inspected and consumed before expensive implementation commits to them.
-5. **Adaptive execution.** Non-trivial authorized implementation uses lightweight execution state/checkpoints and replans when evidence changes the correct path. Trivial work gets no ceremony.
+5. **Adaptive execution.** Use lightweight checkpoints when dependencies, prerequisites, state transitions, meaningful multi-step work, or invalidating evidence can change the path; otherwise use the local short path.
 6. **Evidence matches the claim.** Static/log/tool evidence does not substitute for a material real user/external outcome. Route such claims to `observable-product-verification`.
 7. **No parallel owners.** Plans, routing metadata, reviewers, verifiers, generated views, and host capabilities do not become project truth, architecture owners, or completion authorities.
 8. **Exact gate boundary.** An approval/admission gate blocks the gated state transition, not authorized reversible preparation before it. A broader implementation request does not implicitly authorize crossing that transition.
@@ -61,7 +61,7 @@ Core-First is material when the task can affect or discover ownership/authoritat
 
 If material, load `core-first-extension-architecture` fresh when required by context invalidation and apply it **in the primary context** before choosing the ownership/change boundary. Then direct execution and delegation are only execution modes beneath that decision.
 
-For a truly trivial isolated edit with no material architecture/reuse question, take the short path. If an architecture question appears later, stop further material architecture work, load/apply Core-First, then continue.
+Use the **local short path** only when: owner/edit location + semantics are clear; no material architecture/contract/producer/persistence/gate/authority/dependency decision remains; shared behavior/authoritative transitions are unchanged; and a direct bounded check proves correctness. File count/difficulty alone do not decide materiality. If a material architecture question appears, stop, load/apply Core-First, then continue.
 
 ### 3. Ground material prerequisites
 

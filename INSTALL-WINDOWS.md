@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.11.4 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.3 responsibility/ownership/outcome/debugging/verification baseline and adds one bounded orchestration invariant: an approval/admission gate blocks the gated state transition itself, not authorized reversible preparation before it, and a broad implementation request does not implicitly authorize crossing that gate. No model-specific rule, approval framework, tracker, MCP server, or new Skill is added.
+v0.11.5 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.4 baseline and replaces ambiguous `trivial` / `non-trivial` routing labels with explicit material triggers plus a positively defined local short path. File count or apparent difficulty alone does not decide materiality. No model-specific rule, planning framework, approval framework, tracker, MCP server, or new Skill is added.
 
 ## Optional Authenticode signing
 

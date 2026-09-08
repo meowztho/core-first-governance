@@ -332,7 +332,7 @@ Use only relevant tests:
 
 ## 15. When not to use advanced extension machinery
 
-For trivial, local, low-risk changes, apply the ownership/reuse reasoning and stop there.
+For isolated local low-risk changes where owner/path and semantics are already clear and no material ownership/reuse/system-boundary decision remains, apply only the necessary ownership/reuse reasoning and stop there. File count or apparent difficulty alone does not require advanced extension machinery.
 
 Examples:
 - rename a label;

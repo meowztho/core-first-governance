@@ -1,26 +1,28 @@
-# Core-First Governance v0.11.4
+# Core-First Governance v0.11.5
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
 
-## What v0.11.4 changes
+## What v0.11.5 changes
 
-v0.11.4 is a deliberately small orchestration hardening derived from repeated real-agent workflow failures around approval/admission boundaries. The observed failure had two opposite forms: an agent could cross a human-gated transition merely because a broad implementation request was executable, or it could stop too early and refuse authorized reversible preparation that occurs before the gate.
+v0.11.5 removes `trivial` / `non-trivial` as routing labels from active Core-First runtime text. Those labels were too subjective to tell an agent when planning, preflight, or architecture reasoning is actually required.
 
-The always-loaded orchestration kernel now preserves the **exact gate boundary**:
+Routing now uses explicit **material triggers** plus a positively defined **local short path**:
 
 ```text
-authorized reversible preparation
-→ gated state transition
-→ downstream work
+LOCAL SHORT PATH only when:
+owner/edit location + semantics are clear
++ no material architecture/contract/producer/persistence/gate/authority/dependency decision remains
++ shared behavior / authoritative state transitions stay unchanged
++ direct bounded verification is sufficient
 ```
 
-An approval/admission gate blocks the gated transition itself, not authorized reversible preparation before it. A broad implementation request does not implicitly grant authority to cross that transition.
+File count and apparent difficulty are not policy triggers. A one-line change can be material when it crosses an ownership, contract, producer/persistence, gate, authority, dependency, shared-behavior, or authoritative-state boundary; a broad mechanical edit can remain on the short path when those semantics are already settled.
 
-This is intentionally provider/model neutral and does **not** add a generic approval framework, tracker, sixth Skill, or model-specific exception.
+Two regression evals protect both directions: a small-looking change crossing a material boundary must not use the short path, while a large mechanical rename does not gain planning/Core-First ceremony merely because it touches many files.
 
-### Empirical scope
+## v0.11.4 exact-gate baseline remains intact
 
-The change was kept only after a minimal wording experiment corrected the same gate-class failure across independent agent/model runs. A separate producer-vs-underlying-store failure was also tested with stronger wording but did not show reliable behavioral improvement, so that unsuccessful hardening is **not** added to the runtime Skill. It remains a useful eval/research case rather than permanent prompt weight.
+The exact approval/admission boundary from v0.11.4 is unchanged: authorized reversible preparation may continue up to a project-defined gate, while a broader implementation request does not implicitly authorize crossing the gated state transition.
 
 ## v0.11.3 responsibility-coverage baseline remains intact
 
@@ -102,9 +104,9 @@ The agent distinguishes `CONFIRMED | INFERRED | UNKNOWN`; relative guidance stay
 
 ## Context budget
 
-The always-loaded orchestration kernel is **10,822 bytes** (v0.11.3: 10,594; delta **+228 bytes**). The complete owner-local orchestration corpus is **26,270 bytes** (v0.11.3: 26,042; delta **+228 bytes**) under unchanged ceilings of **11,000-byte kernel**, **4,000 bytes per JIT reference**, and **26,500-byte total**.
+The always-loaded orchestration kernel is **10,998 bytes** (v0.11.4: 10,822; delta **+176 bytes**). The complete owner-local orchestration corpus is **26,444 bytes** (v0.11.4: 26,270; delta **+174 bytes**) under unchanged ceilings of **11,000-byte kernel**, **4,000 bytes per JIT reference**, and **26,500-byte total**.
 
-The canonical Core-First Skill is now **14,379 bytes** (v0.11.2: 14,950; **-571 bytes**) under the unchanged **15,000-byte** ceiling. Detailed conditional/extension-point material moved to existing JIT references rather than being deleted.
+The canonical Core-First Skill is **14,480 bytes** (v0.11.4: 14,379; delta **+101 bytes**) under the unchanged **15,000-byte** ceiling. The change only clarifies short-path invocation wording; ownership/reuse semantics remain unchanged.
 
 ## Consumer-tool decision
 
@@ -125,7 +127,7 @@ No bundled:
 - When architecture/ownership/reuse is material, the primary agent **MUST load and apply `core-first-extension-architecture` itself**.
 - Current repository/project/runtime truth outranks memory, old plans and derived views.
 - Grounded Execution remains `DISCOVERED → INSPECTED → EXTRACTED → MAPPED → CONSUMED`.
-- Non-trivial execution remains adaptive and replans on invalidating evidence.
+- Adaptive execution is triggered by concrete dependencies/prerequisites/state transitions/meaningful multi-step work or invalidating evidence; local short-path work gets no planning ceremony.
 - Existing project routing/index artifacts are reused before broad rediscovery.
 - Core-First verifier remains fresh/read-only/two-phase.
 - Independent Review remains anti-anchored.
@@ -158,8 +160,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-09-03_v0.11.4.md
-├── RELEASE_AUDIT_v0.11.4.md
+├── CONTEXT_HANDOFF_2026-09-08_v0.11.5.md
+├── RELEASE_AUDIT_v0.11.5.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1
@@ -197,6 +199,7 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 - After context loss, discover current workspace state cheaply before JIT loading; never hydrate everything by default.
 - Working aids remain cache and reuse existing discoverability/routing mechanisms.
 - A local fix never replaces the original requested outcome boundary; completion is based on outcome coverage, not passing-evidence count.
+- Use the local short path only when owner/path + semantics are clear, no material boundary/dependency decision remains, shared behavior/authoritative transitions stay unchanged, and direct bounded verification is sufficient; size/file count alone never decides materiality.
 - Preserve approval/admission gates at the exact state transition: authorized reversible preparation before the gate continues; a broad request does not implicitly authorize crossing the gate.
 - Preserve reported observable identity; nearby defects remain separate until causal identity is established.
 - Do not add consumer tools merely because the host/plugin format supports them.

@@ -25,7 +25,7 @@ A plan is **provisional execution state**, not project truth, architecture owner
 
 For complex/spatial/restart-sensitive work, externalize the current model only when useful. Use the cheapest representation, link canonical sources, and mark `CONFIRMED | INFERRED | UNKNOWN`.
 
-It is disposable cache, never authority. Reuse a suitable existing view; reconcile after material change/context loss. Never require it for trivial work.
+It is disposable cache, never authority. Reuse a suitable existing view; reconcile after material change/context loss. Never require it on the local short path.
 
 ## Checkpoint loop
 

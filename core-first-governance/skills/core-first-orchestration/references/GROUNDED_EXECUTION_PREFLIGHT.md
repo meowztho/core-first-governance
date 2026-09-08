@@ -57,4 +57,4 @@ Ask/surface early only when the blocker is genuinely user-owned or externally un
 
 Do not ask the user to resolve discoverable reversible technical facts. Do not construct a speculative substitute before surfacing a real external blocker.
 
-Skip this ceremony for trivial/local work whose inputs and execution path are already well understood.
+Skip when local-short-path criteria hold and the relevant inputs/path are already understood.

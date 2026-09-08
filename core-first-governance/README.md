@@ -13,6 +13,6 @@ Five Skills:
 The **primary agent remains orchestrator + Core-First participant + final integrator**. It loads detailed sibling procedures only when their compact trigger is material. Host metadata/native capabilities may satisfy discovery/execution efficiently; they do not replace portable Governance requirements.
 
 
-v0.11.4 preserves the complete v0.11.3 baseline and adds one bounded orchestration invariant: an approval/admission gate blocks the gated state transition itself, not authorized reversible preparation before it. A broad implementation request does not implicitly authorize crossing that transition.
+v0.11.5 preserves the complete v0.11.4 baseline and replaces ambiguous `trivial` / `non-trivial` routing labels with explicit material triggers plus a positively defined local short path. File count or apparent difficulty alone does not decide materiality. The exact approval/admission gate rule from v0.11.4 remains unchanged.
 
-The rule is provider/model neutral. No approval framework, model-specific exception, Skill, MCP server, consumer-tool bundle, tracker, or new authority artifact is added.
+The clarification is provider/model neutral. No new planning framework, approval framework, model-specific exception, Skill, MCP server, consumer-tool bundle, tracker, or authority artifact is added.
