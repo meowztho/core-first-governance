@@ -86,6 +86,14 @@ Where relevant record:
 - entity position/state;
 - relevant external side-effect baseline.
 
+### 3a. Establish observation-path liveness when freshness is material
+
+A newly acquired artifact or successful observation-tool call does **not** by itself prove that the oracle reflects current state. When the claim materially depends on live/changing state **and** there is a concrete reason the observation path may be stale, frozen, cached, replayed, or disconnected, establish oracle liveness before trusting that evidence.
+
+Use the smallest safe discriminator: either observe independently established ongoing activity or introduce a controlled observable stimulus, then confirm that the oracle reflects the expected change. Identical observations alone do not prove that an oracle is dead when the underlying state may legitimately be static.
+
+If liveness cannot be established, do not use that source as current-state proof. Use another appropriate observation boundary when available, or mark the affected observable claim `INCONCLUSIVE`.
+
 ### 4. Perform the user/external action
 
 Exercise the normal product path rather than a private implementation shortcut when the requirement is about the normal product path.
@@ -265,6 +273,8 @@ Do not:
 - treat logs/telemetry/internal success state as a substitute for a material user-visible result;
 - capture redundant screenshots to re-prove unchanged visible facts already established by a current trustworthy snapshot;
 - reuse a stale visual snapshot after a relevant visual/state-changing modification;
+- treat a newly written evidence artifact or successful capture/observation call as proof that the observation path is live/current when freshness is material;
+- declare an observation path dead from identical samples alone when the observed state may legitimately be static;
 - treat a static screenshot as proof of interaction or temporal behavior;
 - perform a full-product exploratory audit for every local change;
 - fix unrelated observations without scope/authority;

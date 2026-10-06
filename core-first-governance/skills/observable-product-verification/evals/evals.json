@@ -188,6 +188,26 @@
         "canonical_surface_authority_wins": true,
         "verify_against_generated_mockup_instead": false
       }
+    },
+    {
+      "id": "fresh-capture-does-not-prove-oracle-liveness",
+      "prompt": "A live game is demonstrably continuing to animate, but a screenshot tool reports successful new captures whose image content remains byte-identical across several seconds. The latest file has a fresh timestamp and looks plausible. The agent wants to use it as proof of the current rendered state.",
+      "expected": {
+        "fresh_artifact_alone_proves_current_state": false,
+        "must_establish_oracle_liveness": true,
+        "acceptable_method": "independent ongoing activity or controlled observable stimulus",
+        "use_as_current_visual_evidence_before_liveness": false,
+        "fallback_if_liveness_unavailable": "INCONCLUSIVE_OR_ALTERNATE_OBSERVATION_PATH"
+      }
+    },
+    {
+      "id": "identical-static-observations-do-not-prove-dead-oracle",
+      "prompt": "A legitimately static settings screen produces two byte-identical screenshots one second apart. No independent signal or controlled stimulus says the screen should have changed.",
+      "expected": {
+        "identical_samples_alone_prove_dead_oracle": false,
+        "must_invent_activity": false,
+        "liveness_check_required_only_if_freshness_is_material_and_staleness_is_plausible": true
+      }
     }
   ]
 }

@@ -1,24 +1,28 @@
-# Core-First Governance v0.11.5
+# Core-First Governance v0.11.6
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
 
-## What v0.11.5 changes
+## What v0.11.6 changes
 
-v0.11.5 removes `trivial` / `non-trivial` as routing labels from active Core-First runtime text. Those labels were too subjective to tell an agent when planning, preflight, or architecture reasoning is actually required.
+v0.11.6 adds one bounded hardening to the existing `observable-product-verification` owner: **freshly acquired evidence is not automatically fresh observed state**. A successful screenshot/capture/observation call or newly written artifact can still replay stale, frozen, cached, or disconnected state.
 
-Routing now uses explicit **material triggers** plus a positively defined **local short path**:
+The new rule is deliberately conditional:
 
 ```text
-LOCAL SHORT PATH only when:
-owner/edit location + semantics are clear
-+ no material architecture/contract/producer/persistence/gate/authority/dependency decision remains
-+ shared behavior / authoritative state transitions stay unchanged
-+ direct bounded verification is sufficient
+claim materially depends on live/current state
++ concrete reason the observation path may be stale/frozen/cached/replayed/disconnected
+→ establish observation-path liveness
+→ use independent ongoing activity or the smallest controlled observable stimulus
+→ trust that oracle only if it reflects the expected change
 ```
 
-File count and apparent difficulty are not policy triggers. A one-line change can be material when it crosses an ownership, contract, producer/persistence, gate, authority, dependency, shared-behavior, or authoritative-state boundary; a broad mechanical edit can remain on the short path when those semantics are already settled.
+The converse is protected too: identical observations alone do **not** prove a dead oracle when the underlying state may legitimately be static. If liveness cannot be established, use another appropriate boundary or keep the affected claim `INCONCLUSIVE`.
 
-Two regression evals protect both directions: a small-looking change crossing a material boundary must not use the short path, while a large mechanical rename does not gain planning/Core-First ceremony merely because it touches many files.
+Two OPV regression evals protect both directions: `fresh-capture-does-not-prove-oracle-liveness` and `identical-static-observations-do-not-prove-dead-oracle`. No orchestration, ownership, debugging-owner, JIT-routing, verifier, review, or tooling semantics change.
+
+## v0.11.5 routing baseline remains intact
+
+v0.11.5's positively defined **local short path**, material-trigger routing, and removal of subjective `trivial` / `non-trivial` labels remain unchanged. File count and apparent difficulty are not policy triggers.
 
 ## v0.11.4 exact-gate baseline remains intact
 
@@ -104,9 +108,9 @@ The agent distinguishes `CONFIRMED | INFERRED | UNKNOWN`; relative guidance stay
 
 ## Context budget
 
-The always-loaded orchestration kernel is **10,998 bytes** (v0.11.4: 10,822; delta **+176 bytes**). The complete owner-local orchestration corpus is **26,444 bytes** (v0.11.4: 26,270; delta **+174 bytes**) under unchanged ceilings of **11,000-byte kernel**, **4,000 bytes per JIT reference**, and **26,500-byte total**.
+The always-loaded orchestration kernel remains **10,998 bytes** and the complete owner-local orchestration corpus remains **26,444 bytes** under unchanged ceilings of **11,000-byte kernel**, **4,000 bytes per JIT reference**, and **26,500-byte total**. `core-first-extension-architecture/SKILL.md` remains **14,480 bytes** under its unchanged **15,000-byte** ceiling.
 
-The canonical Core-First Skill is **14,480 bytes** (v0.11.4: 14,379; delta **+101 bytes**) under the unchanged **15,000-byte** ceiling. The change only clarifies short-path invocation wording; ownership/reuse semantics remain unchanged.
+Only the JIT-loaded `observable-product-verification/SKILL.md` changes in v0.11.6: **15,681 → 16,907 bytes** (+1,226). No always-loaded Core-First context is added.
 
 ## Consumer-tool decision
 
@@ -160,8 +164,8 @@ The installer copies the plugin to `%USERPROFILE%\.codex\plugins\core-first-gove
 ```text
 .
 ├── README.md
-├── CONTEXT_HANDOFF_2026-09-08_v0.11.5.md
-├── RELEASE_AUDIT_v0.11.5.md
+├── CONTEXT_HANDOFF_2026-10-06_v0.11.6.md
+├── RELEASE_AUDIT_v0.11.6.md
 ├── INSTALL-WINDOWS.md
 ├── install-personal-windows.ps1
 ├── sign-installer.ps1

@@ -31,7 +31,7 @@ with source path:
 
 Then fully quit and restart the ChatGPT desktop app, open **Plugins Directory**, select the personal marketplace/source, install **Core-First Governance**, and start a **new Codex thread**.
 
-v0.11.5 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.4 baseline and replaces ambiguous `trivial` / `non-trivial` routing labels with explicit material triggers plus a positively defined local short path. File count or apparent difficulty alone does not decide materiality. No model-specific rule, planning framework, approval framework, tracker, MCP server, or new Skill is added.
+v0.11.6 exposes the same five Skills and remains Skills-only. It preserves the complete v0.11.5 routing/architecture baseline and adds only freshness-sensitive oracle-liveness protection inside `observable-product-verification`. No model-specific rule, planning framework, approval framework, tracker, MCP server, or new Skill is added.
 
 ## Optional Authenticode signing
 
