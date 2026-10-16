@@ -120,6 +120,8 @@ Debugging, discovery, review, migration assessment, and reuse-proof tasks are no
 
 1. Identify repository root, applicable instructions, Git state, current requirement, and relevant canonical authorities.
 2. Name the exact responsibility, then resolve its current carrier/effective decision path, implementation anchor, and canonical owner status before changing behavior. Do not infer ownership from class/file names or from the mere presence/size of an implementation.
+   Before adding a class, module, or owner, check an existing project index if present and search the relevant code boundary by responsibility and likely synonyms; inspect candidate symbols, callers, and tests. A missing name match does not establish that the behavior is absent. Reuse or extend a candidate only when its semantics and owner path fit.
+   For quantitative requirements, record what is counted and whether the wording means exact (`5`), minimum (`5 or more`), maximum (`5 or fewer`), approximate target (`about 5`), or unresolved. A bound is not a reason to create extra components; reconcile later changes to the same requirement before selecting the implementation.
 3. Ask whether the request is only data/configuration, a relative modifier, or a substitution at an existing slot.
 4. Reuse or compose an existing capability/module/provider before extending architecture.
 5. Add a reusable module beneath an existing capability before creating a new capability.

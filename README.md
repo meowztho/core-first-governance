@@ -1,6 +1,12 @@
-# Core-First Governance v0.11.6
+# Core-First Governance v0.11.7
 
 Provider-neutral governance for AI-assisted software work, currently packaged as a Codex **Skills-only** plugin.
+
+## What v0.11.7 changes
+
+Core-First now checks the relevant code boundary by responsibility and synonyms before adding a class, module, or owner. For large or restart-sensitive work, a small optional implementation lexicon can point from user terms to current code symbols and consumers; it remains a checked working view, not a second source of project truth. The architecture procedure also distinguishes exact counts, lower and upper bounds, and approximate targets before choosing a change.
+
+The v0.11.6 handoff and all other Skill procedures remain intact. No new tool, mandatory artifact, or repository-wide inventory is introduced.
 
 ## What v0.11.6 changes
 

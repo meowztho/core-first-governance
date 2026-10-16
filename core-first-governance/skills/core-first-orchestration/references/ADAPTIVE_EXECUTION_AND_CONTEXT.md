@@ -27,6 +27,10 @@ For complex/spatial/restart-sensitive work, externalize the current model only w
 
 It is disposable cache, never authority. Reuse a suitable existing view; reconcile after material change/context loss. Never require it on the local short path.
 
+For a large or restart-sensitive codebase, an optional **implementation lexicon** can make discovered reuse paths findable: map the user's terms and synonyms to a named responsibility, current code symbols/locations, and relevant callers, consumers, or tests. Link each entry to its source and revision/freshness; distinguish confirmed links from inference. Reuse an existing project index or working view where suitable. This view points to live code and contracts; it must not copy authoritative rules or values into a second owner.
+
+Consult and verify relevant entries against current code before adding a parallel implementation. If an entry is absent or stale, search the bounded responsibility area before concluding that no carrier exists. Refresh only affected entries after a material edit or context loss; no full-repository inventory, fixed file format, or new tool is required.
+
 ## Checkpoint loop
 
 ```text

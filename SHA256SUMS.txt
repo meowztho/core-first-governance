@@ -1,11 +1,11 @@
 b9c6a4c0fec0d86a36a78313adc5502dbdb3f577bbae4afa61225b35a0d5def4  ./CONTEXT_HANDOFF_2026-10-06_v0.11.6.md
 5a2238e62ebbd851e2319f2a6dd08423dfde65beaacd0dc5f933ccba3fd8f050  ./INSTALL-WINDOWS.md
-853eea95374545deac9fb76066604d75ecab129439626a1e405948d1f970bb43  ./README.md
+3a1d6cfda810494641ce685d7cfba9c1ed1e49e53494ac35489bf61f0928ab82  ./README.md
 3c6691ec9b8ccef6b495d0580d7545c98bf624a9bc86830c28c5d13d017f35f4  ./RELEASE_AUDIT_v0.11.6.md
-7da85bb881ce00a2a509e2632cfdfbf4e5d4cd4c0f59ad16ad690ebef23ea922  ./core-first-governance/.codex-plugin/plugin.json
-5971fff7e5f04a0fc2facea921540595ddfd41cc8c39f1266dd8a18dcc98d945  ./core-first-governance/README.md
+07b1658685535e67337a18bbdcaadd6b8585a3cb9d6a03ff3c68b1005d895247  ./core-first-governance/.codex-plugin/plugin.json
+597f12452cbf00d35df17370e0ce3ec478cd79b9bb465084c68952e5c3de22f1  ./core-first-governance/README.md
 0c3c04cb172a8056421ab90a8e686e33ae3b38c3dd82b9570a18f3feff1d83b7  ./core-first-governance/SOURCE_PROVENANCE.md
-d1732b2eb6861cf3a9c0137f054e23ea95f062912cce71ee2458e6d100432e2c  ./core-first-governance/skills/core-first-extension-architecture/SKILL.md
+4872a4a1c3fc4a37f895608a2b1558ca67a90d379da039a96c41ec38dcac4e09  ./core-first-governance/skills/core-first-extension-architecture/SKILL.md
 558b26d5e24e7dbdd2b87f98963521ed1b0ada85ad5d7a33fa727ab7e0031e26  ./core-first-governance/skills/core-first-extension-architecture/agents/openai.yaml
 70d38acfa30812acdca4793c73442d6847b0ca215a3c33f6cdd268600636bc2b  ./core-first-governance/skills/core-first-extension-architecture/evals/evals.json
 ad856fefe2a61fdb126cb26d6bf5c0d5f870fd6c5f1855ce774e21d2546b4d17  ./core-first-governance/skills/core-first-extension-architecture/references/CONDITIONAL_PROFILES.md
@@ -13,7 +13,7 @@ ad856fefe2a61fdb126cb26d6bf5c0d5f870fd6c5f1855ce774e21d2546b4d17  ./core-first-g
 d29e8601a90b51c9fe7cbc023f2652a2702e9d645424263c648acba73c201ec6  ./core-first-governance/skills/core-first-orchestration/SKILL.md
 7d134d23fd60466e3f665f5d67ca11abcc6ba90bba59592a0ef8eca45db23299  ./core-first-governance/skills/core-first-orchestration/agents/openai.yaml
 4cede292e10a3bd57ea5d197098671558e6d6ae7912fb135cbf624b9fd35385b  ./core-first-governance/skills/core-first-orchestration/evals/evals.json
-409cf938d5b77146809203dd0c7957512789d7c0121ce43616a3416fc1261e23  ./core-first-governance/skills/core-first-orchestration/references/ADAPTIVE_EXECUTION_AND_CONTEXT.md
+fd1e900163e6ca59e783d0ed5100cecad0e2fe19690cb9d54e21c62f97a27efc  ./core-first-governance/skills/core-first-orchestration/references/ADAPTIVE_EXECUTION_AND_CONTEXT.md
 a64004b279b978151f314a2ef832b6702408c0ce09d95abc4314f11c28185672  ./core-first-governance/skills/core-first-orchestration/references/DELEGATION_CONTEXT.md
 642335262f885bc7c82abee2544932242c2ca2007385216558dea332ad4ff885  ./core-first-governance/skills/core-first-orchestration/references/EVIDENCE_DRIVEN_DEBUGGING.md
 4bcb77ddaaa59eb5b8e1d4826d94ef1c6d28c168e0f10e037ad67ba4c0ca6799  ./core-first-governance/skills/core-first-orchestration/references/GROUNDED_EXECUTION_PREFLIGHT.md
@@ -29,5 +29,5 @@ dc03ea10b4acef05cd3e308cda44f62ab0eb43e95b3c481ed601b244e3848292  ./core-first-g
 b973dbccbafe8c4237c2e5c4af45c5f9276235b6bea2239c56202cb4c2e13ac7  ./core-first-governance/skills/observable-product-verification/evals/evals.json
 3340efcf9b9f6213645aa6003f6da0ad257d0a13fd4fb1867c76a9b4534370cd  ./examples/personal-marketplace.generated.json
 05daadbc07b5d0ad7a62c644ad9446c0c9c48fd0318429872970683c2a3044c3  ./install-personal-windows.ps1
-8e48db2db6bf92d559b6417f948acb51525e97d2f8ac5165d85d32d330168efc  ./sign-installer.ps1
-a7f5303dbdf8e5972a506c44418844c9aea2ca1bb3bb8c78d268c893d269207b  ./validate_release.py
+30217c63e9133fda54bf6f66b1a79a5e54168a6beec16e3daa2c70d9e45eb70e  ./sign-installer.ps1
+9e395689fa3566e8180db5d3ad8211c9af00cbae54f327363fd1c7ddb12f7ad8  ./validate_release.py

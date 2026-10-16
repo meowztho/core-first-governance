@@ -2,6 +2,8 @@
 
 Provider-neutral governance packaged here as a Codex plugin.
 
+v0.11.7 adds a bounded semantic search for existing code carriers before new classes/modules/owners, interprets quantitative requirement bounds, and permits a small optional implementation lexicon as a checked working view for large or restart-sensitive codebases. It adds no required file, tool, or parallel authority.
+
 Five Skills:
 
 - `core-first-orchestration` — compact primary-agent kernel for JIT Skill/procedure routing, exact approval/admission gate boundaries, primary Core-First duty, grounded/adaptive execution, evidence-driven debugging, workspace reconciliation, delegation and verification/completion routing.
